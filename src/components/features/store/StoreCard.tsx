@@ -1,32 +1,130 @@
+import {
+	useAppDispatch,
+	useAppSelector,
+} from "../../../utils/hooks/reduxHooks";
+import FadeInOut from "../../ui/animations/FadeInOut";
 import BackgroundFourIncline from "../../ui/backgrounds/BackgroundFourIncline";
-import Button from "../../ui/Button";
+import ButtonSkewed from "../../ui/ButtonSkewed";
+import MessageBox from "../../ui/MessageBox";
+import { addToCart } from "../accounts/AccountSlice";
 
 type StoreCardProps = {
 	img: string;
+	id: number;
 	itemName: string;
 	itemPrice: number;
 	itemDescription: string;
+	itemStock: number;
 };
 
 function StoreCard({
 	img,
+	id,
 	itemName,
 	itemPrice,
 	itemDescription,
+	itemStock,
 }: StoreCardProps) {
+	const dispatch = useAppDispatch();
+
+	const storeCart = useAppSelector((state) => state.account.cart);
+	const isInCart = storeCart.some((item) => item.itemId === id);
+
+	function handleAddToCart() {
+		const newCartItem = {
+			itemId: id,
+			itemName,
+			itemStock,
+			itemQuantity: 1,
+			itemPrice,
+			itemImage: img,
+		};
+		dispatch(addToCart(newCartItem));
+	}
+
 	return (
-		<div className="w-full max-w-100 shrink-0 overflow-hidden rounded-xs border border-[rgba(0,0,0,0.2)]">
-			<div className="relative w-full border-b border-[rgba(0,0,0,0.2)]">
+		<div className="relative flex w-full shrink-0 flex-col overflow-clip rounded-xs border border-[rgba(0,0,0,0.2)] bg-white xl:max-w-100">
+			<div className="relative flex h-55 w-full items-center justify-center overflow-clip border-b border-[rgba(0,0,0,0.2)] py-3">
 				<span className="absolute top-4 right-4 flex items-center justify-center rounded-xs bg-black px-10 py-2 text-white">
 					${itemPrice}
 				</span>
-				<img className="w-full" src={img} alt={itemName} />
+				<img className="h-full" src={img} alt={itemName} />
 			</div>
-			<div className="relative p-4">
-				<h3 className="text-2xl">{itemName}</h3>
-				<p className="mb-10">{itemDescription}</p>
-				<Button>See more details</Button>
-				<BackgroundFourIncline className="absolute bottom-0 -left-30 -z-1 rotate-y-180 transform-gpu opacity-10" />
+			<div className="relative h-full p-4">
+				<div className="relative z-10 flex h-full flex-col justify-between">
+					<div>
+						<h3 className="mb-2 line-clamp-1 text-2xl">{itemName}</h3>
+						<p className="mb-10 line-clamp-3">{itemDescription}</p>
+					</div>
+					<div className="h-8">
+						<FadeInOut show={isInCart}>
+							<div className="mb-2 w-full">// Item added to cart</div>
+						</FadeInOut>
+					</div>
+
+					<div className="flex items-center justify-between gap-6">
+						{itemStock ? (
+							<>
+								<ButtonSkewed
+									className="w-[80%] justify-start pl-5"
+									to={`/store/${id}`}
+								>
+									SEE MORE DETAILS
+								</ButtonSkewed>
+
+								<button
+									onClick={handleAddToCart}
+									disabled={isInCart}
+									className={`${isInCart ? "cursor-default" : "cursor-pointer"} group relative right-4 flex min-h-12.5 w-[20%] items-center justify-center rounded-xs p-4`}
+								>
+									<div
+										className={`${isInCart ? "cursor-default bg-black text-white" : "bg-transparent"} absolute inset-0 scale-y-105 -skew-x-20 transform-gpu rounded-xs border border-black transition-all duration-200 group-hover:bg-black`}
+									></div>
+									<FadeInOut delay={200} show={!isInCart}>
+										<svg
+											className="mr-1 scale-125 transform-gpu group-hover:text-white"
+											width="17"
+											height="17"
+											viewBox="0 0 17 17"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M16.5 2.27778L14.9294 7.77472C14.8068 8.20402 14.4144 8.5 13.9679 8.5H4.39041M15.6111 12.0556H5.80236C5.30879 12.0556 4.88904 11.6954 4.81399 11.2076L3.29712 1.34794C3.22207 0.860111 2.80232 0.5 2.30875 0.5H0.5M8.05556 4.05556L9.83333 5.83333M9.83333 5.83333L11.6111 4.05556M9.83333 5.83333V0.5M5.83333 15.6111C5.83333 16.102 5.43536 16.5 4.94444 16.5C4.45353 16.5 4.05556 16.102 4.05556 15.6111C4.05556 15.1202 4.45353 14.7222 4.94444 14.7222C5.43536 14.7222 5.83333 15.1202 5.83333 15.6111ZM15.6111 15.6111C15.6111 16.102 15.2132 16.5 14.7222 16.5C14.2313 16.5 13.8333 16.102 13.8333 15.6111C13.8333 15.1202 14.2313 14.7222 14.7222 14.7222C15.2132 14.7222 15.6111 15.1202 15.6111 15.6111Z"
+												stroke="currentColor"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+											/>
+										</svg>
+									</FadeInOut>
+									<FadeInOut delay={220} show={isInCart}>
+										<svg
+											width="18"
+											className="mr-1 scale-125 transform-gpu group-hover:text-white"
+											height="18"
+											viewBox="0 0 18 18"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M17.5 2.38889L15.6111 9H4.63356M16.5556 12.7778H5.22222L3.33333 0.5H0.5M8.05556 3.33333L9.94444 5.22222L13.7222 1.44444M6.16667 16.5556C6.16667 17.0772 5.74382 17.5 5.22222 17.5C4.70062 17.5 4.27778 17.0772 4.27778 16.5556C4.27778 16.0339 4.70062 15.6111 5.22222 15.6111C5.74382 15.6111 6.16667 16.0339 6.16667 16.5556ZM16.5556 16.5556C16.5556 17.0772 16.1327 17.5 15.6111 17.5C15.0895 17.5 14.6667 17.0772 14.6667 16.5556C14.6667 16.0339 15.0895 15.6111 15.6111 15.6111C16.1327 15.6111 16.5556 16.0339 16.5556 16.5556Z"
+												stroke="white"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+											/>
+										</svg>
+									</FadeInOut>
+								</button>
+							</>
+						) : (
+							<MessageBox className="h-full bg-white py-3.5">
+								SOLD OUT
+							</MessageBox>
+						)}
+					</div>
+				</div>
+
+				<BackgroundFourIncline className="absolute bottom-0 -left-30 z-1 rotate-y-180 transform-gpu opacity-10" />
 			</div>
 		</div>
 	);

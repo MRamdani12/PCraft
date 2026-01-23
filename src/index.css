@@ -15,3 +15,109 @@ p {
 	font-weight: 400;
 	font-size: 1rem;
 }
+
+.store-card-loading {
+	position: relative;
+}
+
+.store-card-loading::before {
+	content: "";
+	position: absolute;
+	top: -250px;
+	left: 100px;
+	width: 100px;
+	height: 300%;
+	transform: rotateZ(45deg);
+
+	background-image: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 0.5) 50%,
+		rgba(255, 255, 255, 0.8) 80%,
+		rgba(255, 255, 255, 0.8) 100%
+	);
+	z-index: 100;
+	animation: cardLoading infinite 1.5s;
+}
+
+@keyframes cardLoading {
+	from {
+		transform: translateX(-400%) rotateZ(45deg);
+	}
+	to {
+		transform: translateX(260%) rotateZ(45deg);
+	}
+}
+
+.store-card-long-loading {
+	position: relative;
+}
+
+.store-card-long-loading::before {
+	content: "";
+	position: absolute;
+	top: -250px;
+	left: 100px;
+	width: 100px;
+	height: 300%;
+	transform: rotateZ(45deg);
+
+	background-image: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 0.5) 50%,
+		rgba(255, 255, 255, 0.8) 80%,
+		rgba(255, 255, 255, 0.8) 100%
+	);
+	z-index: 100;
+	animation: cardLongLoading infinite 1.5s;
+}
+
+@keyframes cardLongLoading {
+	from {
+		transform: translateX(-400%) rotateZ(25deg);
+	}
+	to {
+		transform: translateX(1400%) rotateZ(25deg);
+	}
+}
+
+.load-container {
+	display: flex;
+	gap: 10px;
+	& .load-period {
+		width: 10px;
+		height: 10px;
+		border-radius: 2px;
+		background-color: black;
+		opacity: 0.3;
+		animation: 0.5s ease-in alternate infinite loading;
+	}
+
+	& .load-period:nth-child(1) {
+		animation-delay: 0.2s;
+	}
+
+	& .load-period:nth-child(2) {
+		animation-delay: 0.4s;
+	}
+
+	& .load-period:nth-child(3) {
+		animation-delay: 0.6s;
+	}
+
+	& .load-period:nth-child(4) {
+		animation-delay: 0.8s;
+	}
+}
+
+@keyframes loading {
+	from {
+		opacity: 0.2;
+		transform: translateY(0) scale(1);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(-5px) scale(1.1);
+	}
+}

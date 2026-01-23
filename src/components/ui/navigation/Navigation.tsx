@@ -18,7 +18,7 @@ function Navigation() {
 							<ButtonLink to="/">Check order history</ButtonLink>
 						</div>
 					) : (
-						<Button to="login">LOGIN</Button>
+						<Button to="/login">LOGIN</Button>
 					)}
 				</div>
 			</Container>

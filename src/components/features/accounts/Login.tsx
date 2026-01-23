@@ -4,7 +4,7 @@ import {
 	useAppDispatch,
 	useAppSelector,
 } from "../../../utils/hooks/reduxHooks";
-import { create } from "./AccountSlice";
+import { createAccount } from "./AccountSlice";
 
 import BackgroundLogo from "../../ui/backgrounds/BackgroundLogo";
 import loginBg from "../../../assets/login-bg.png";
@@ -31,10 +31,11 @@ function Login() {
 			id: crypto.randomUUID(),
 			userName,
 			email,
+			cart: [],
 			createdAt: new Date().toLocaleDateString(),
 		};
 
-		dispatch(create(newAccount));
+		dispatch(createAccount(newAccount));
 		setUserName("");
 		setEmail("");
 	};
@@ -44,7 +45,7 @@ function Login() {
 			<ReturnNav className="absolute top-5 left-5 z-100 flex items-center justify-between gap-2 text-white xl:top-20 xl:left-20 xl:text-black">
 				Return Home
 			</ReturnNav>
-			<BackgroundBar className="none absolute -bottom-4 -left-10 -z-1 hidden overflow-hidden xl:block" />
+			<BackgroundBar className="none absolute -bottom-4 -left-10 -z-1 hidden overflow-clip xl:block" />
 			<div className="flex h-full flex-col-reverse items-center justify-center gap-5 xl:flex-row">
 				<div className="xl: flex h-full flex-col justify-center px-5 py-5 xl:h-dvh xl:w-[50%] xl:px-20">
 					<h1 className="pb-5 leading-15">
@@ -62,11 +63,11 @@ function Login() {
 							{accName}
 							{accEmail}
 							<label className="text-xl font-light" htmlFor="userName">
-								UserName
+								Username
 							</label>
 							<input
 								className="w-full border border-solid border-black p-2"
-								placeholder="Enter your userName"
+								placeholder="Enter your username"
 								id="userName"
 								type="text"
 								value={userName}

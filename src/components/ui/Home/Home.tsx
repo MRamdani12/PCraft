@@ -1,17 +1,17 @@
-import BackgroundBar from "./backgrounds/BackgroundBar";
-import BackgroundBarStroke from "./backgrounds/BackgroundBarStroke";
-import BackgroundLogo from "./backgrounds/BackgroundLogo";
-import Button from "./Button";
-import Container from "./Container";
-import aboutImg from "../../assets/pexels-joshsorenson-1714208 1.png";
+import BackgroundBar from "../backgrounds/BackgroundBar";
+import BackgroundBarStroke from "../backgrounds/BackgroundBarStroke";
+import BackgroundLogo from "../backgrounds/BackgroundLogo";
+import Button from "../buttons/Button";
+import Container from "../Container";
+import aboutImg from "../../../assets/pexels-joshsorenson-1714208 1.png";
 
-import Navigation from "./navigation/Navigation";
-import { useAppSelector } from "../../utils/hooks/reduxHooks";
-import StoreCard from "../features/store/StoreCard";
+import Navigation from "../navigation/Navigation";
+import { useAppSelector } from "../../../utils/hooks/reduxHooks";
+import StoreCard from "../../features/store/StoreCard";
 import HomeSlider from "./HomeSlider";
-import StoreCardLoading from "../features/store/StoreCardLoading";
-import MessageBox from "./MessageBox";
-import GlobalCartButton from "../features/accounts/cart/GlobalCartButton";
+import StoreCardLoading from "../../features/store/StoreCardLoading";
+import MessageBox from "../MessageBox";
+import GlobalCartButton from "../../features/accounts/cart/GlobalCartButton";
 
 function Home() {
 	const storeState = useAppSelector((state) => state.store);
@@ -67,7 +67,7 @@ function Home() {
 								<div className="gaming-rig relative z-100">
 									<img src={aboutImg} alt="h-full" />
 								</div>
-								<div className="absolute -bottom-50 left-0 z-0">
+								<div className="absolute -bottom-50 left-0 z-0 hidden xl:block">
 									<svg
 										width="75"
 										height="250"

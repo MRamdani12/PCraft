@@ -18,9 +18,9 @@ import Container from "../../ui/Container";
 import BackgroundBarAlternate from "../../ui/backgrounds/BackgroundBarAlternate";
 import Navigation from "../../ui/navigation/Navigation";
 import StoreCard from "./StoreCard";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import expandImg from "../../../assets/icons/expand.svg";
-import ButtonSkewed from "../../ui/ButtonSkewed";
+import ButtonSkewed from "../../ui/buttons/ButtonSkewed";
 import MessageBox from "../../ui/MessageBox";
 import BackgroundLogo from "../../ui/backgrounds/BackgroundLogo";
 import Modal from "../../ui/Modal";
@@ -79,6 +79,7 @@ function StoreDetail() {
 			itemQuantity: 1,
 			itemPrice: storeItem.price,
 			itemImage: storeItem.gallery[0].url,
+			itemDescription: storeItem.description.intro,
 		};
 		dispatch(addToCart(newCartItem));
 	}
@@ -268,13 +269,13 @@ function StoreDetail() {
 										{storeItem.stock > 0 && !isInCart && (
 											<div className="flex w-full items-center justify-between gap-1">
 												<ButtonSkewed
-													className="w-[49%]"
+													className="w-[49%] pr-3"
 													onClick={() => {
 														handleAddToCart();
 														navigate("/cart");
 													}}
 												>
-													PURCHASE
+													PURCHASE | ${storeItem.price}
 												</ButtonSkewed>
 												<ButtonSkewed
 													className="w-[51%]"

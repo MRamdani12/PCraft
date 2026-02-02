@@ -38,6 +38,46 @@ export const accountMiddleware: Middleware = () => (next) => (action) => {
 		localStorage.setItem("account", JSON.stringify(accountData));
 	}
 
+	// if (changeOrderStatus.match(action)) {
+	// 	const account = localStorage.getItem("account");
+	// 	if (!account) {
+	// 		return result;
+	// 	}
+	// 	let accountData: AccountStateType = JSON.parse(account);
+	// 	const order = accountData.orders.find(
+	// 		(item) => item.id === action.payload.id,
+	// 	);
+
+	// 	if (order) {
+	// 		order.status = action.payload.status;
+	// 		accountData = {
+	// 			...accountData,
+	// 			orders: accountData.orders.map((order) =>
+	// 				order.id === action.payload.id
+	// 					? { ...order, status: action.payload.status }
+	// 					: order,
+	// 			),
+	// 		};
+	// 	}
+
+	// 	localStorage.setItem("account", JSON.stringify(accountData));
+	// }
+
+	// if (addOrder.match(action)) {
+	// 	const account = localStorage.getItem("account");
+	// 	if (!account) {
+	// 		return result;
+	// 	}
+	// 	let accountData: AccountStateType = JSON.parse(account);
+
+	// 	accountData = {
+	// 		...accountData,
+	// 		orders: [...accountData.orders, action.payload],
+	// 	};
+
+	// 	localStorage.setItem("account", JSON.stringify(accountData));
+	// }
+
 	if (addCartItemQuantity.match(action)) {
 		const account = localStorage.getItem("account");
 		if (!account) {

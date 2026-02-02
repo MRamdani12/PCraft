@@ -1,6 +1,6 @@
 import { useState } from "react";
-import BackgroundFourIncline from "./backgrounds/BackgroundFourIncline";
-import BackgroundFourInclineStroke from "./backgrounds/BackgroundFourInclineStroke";
+import BackgroundFourIncline from "../backgrounds/BackgroundFourIncline";
+import BackgroundFourInclineStroke from "../backgrounds/BackgroundFourInclineStroke";
 
 // 40 is for padding
 const ITEM_WIDTH = 440;

@@ -46,7 +46,7 @@ function FadeInOut({
 			clearTimeout(visibleTimeout);
 			clearTimeout(renderTimeout);
 		};
-	}, [show]);
+	}, [isFirst, show, startDelay, transitionDuration]);
 
 	return (
 		render && (

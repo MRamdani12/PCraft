@@ -1,0 +1,25 @@
+{
+	"status": "waiting_payment",
+	"name": "Dani",
+	"email": "Dani@gmail.com",
+	"phone_number": "08989091283",
+	"address": "Jl pengasinan tengah, bekasi, jawa barat, indonesia",
+	"items": [
+		{
+			"id": 1,
+			"img": "asdasd",
+			"itemName": "RTX 5080",
+			"quantity": "2",
+			"price": 1599
+		},
+		{
+			"id": 2,
+			"img": "asdasd",
+			"itemName": "RTX 5050",
+			"quantity": "10",
+			"price": 300
+		}
+	],
+
+	"created_at": 1765265700000
+}

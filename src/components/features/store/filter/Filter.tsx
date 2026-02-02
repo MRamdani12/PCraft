@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router";
 import type { SortFilterType } from "../utils/types/SortFilterType";
 import ViewButton from "./ViewButton";
 import CategoryTag from "./CategoryTag";
-import ButtonLink from "../../../ui/ButtonLink";
+import ButtonLink from "../../../ui/buttons/ButtonLink";
 
 type FilterProps = {
 	uniqueCategories: string[];
@@ -25,8 +25,8 @@ function Filter({
 		"Default",
 		"Highest Price",
 		"Lowest Price",
-		"Date (asc)",
-		"Date (desc)",
+		"Oldest",
+		"Newest",
 	];
 
 	function handleSearchFilters(e: React.ChangeEvent<HTMLInputElement>) {

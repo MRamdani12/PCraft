@@ -4,7 +4,7 @@ import {
 } from "../../../utils/hooks/reduxHooks";
 import FadeInOut from "../../ui/animations/FadeInOut";
 import BackgroundFourIncline from "../../ui/backgrounds/BackgroundFourIncline";
-import ButtonSkewed from "../../ui/ButtonSkewed";
+import ButtonSkewed from "../../ui/buttons/ButtonSkewed";
 import MessageBox from "../../ui/MessageBox";
 import { addToCart } from "../accounts/AccountSlice";
 
@@ -26,9 +26,13 @@ function StoreCard({
 	itemStock,
 }: StoreCardProps) {
 	const dispatch = useAppDispatch();
-
 	const storeCart = useAppSelector((state) => state.account.cart);
+
 	const isInCart = storeCart.some((item) => item.itemId === id);
+	const formattedPrice = new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+	}).format(itemPrice);
 
 	function handleAddToCart() {
 		const newCartItem = {
@@ -38,6 +42,7 @@ function StoreCard({
 			itemQuantity: 1,
 			itemPrice,
 			itemImage: img,
+			itemDescription: itemDescription,
 		};
 		dispatch(addToCart(newCartItem));
 	}
@@ -46,15 +51,16 @@ function StoreCard({
 		<div className="relative flex w-full shrink-0 flex-col overflow-clip rounded-xs border border-[rgba(0,0,0,0.2)] bg-white xl:max-w-100">
 			<div className="relative flex h-55 w-full items-center justify-center overflow-clip border-b border-[rgba(0,0,0,0.2)] py-3">
 				<span className="absolute top-4 right-4 flex items-center justify-center rounded-xs bg-black px-10 py-2 text-white">
-					${itemPrice}
+					{formattedPrice}
 				</span>
+
 				<img className="h-full" src={img} alt={itemName} />
 			</div>
 			<div className="relative h-full p-4">
 				<div className="relative z-10 flex h-full flex-col justify-between">
-					<div>
+					<div className="mb-10">
 						<h3 className="mb-2 line-clamp-1 text-2xl">{itemName}</h3>
-						<p className="mb-10 line-clamp-3">{itemDescription}</p>
+						<p className="line-clamp-3">{itemDescription}</p>
 					</div>
 					<div className="h-8">
 						<FadeInOut show={isInCart}>

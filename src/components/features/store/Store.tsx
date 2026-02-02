@@ -18,7 +18,7 @@ import FloatingError from "../../ui/FloatingError";
 import { deleteError } from "../accounts/AccountSlice";
 import FadeInOut from "../../ui/animations/FadeInOut";
 import GlobalCartButton from "../accounts/cart/GlobalCartButton";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 
 function Store() {
 	const storeState = useAppSelector((state) => state.store);
@@ -63,11 +63,11 @@ function Store() {
 					return b.price - a.price;
 				case "Lowest Price":
 					return a.price - b.price;
-				case "Date (asc)":
+				case "Oldest":
 					return (
 						new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
 					);
-				case "Date (desc)":
+				case "Newest":
 					return (
 						new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
 					);
@@ -128,7 +128,7 @@ function Store() {
 						view={view}
 					/>
 
-					{processedStoreItems.length ? (
+					{processedStoreItems.length > 0 && (
 						<>
 							<div className="hidden pb-30 xl:block">
 								<FadeInOut duration={50} show={view === "grid"}>
@@ -160,10 +160,18 @@ function Store() {
 								</div>
 							</div>
 						</>
-					) : (
-						<MessageBox className="flex flex-col items-center justify-center gap-5 py-20">
-							<p className="text-3xl!">No items found</p>
-							<Button to="/store">RESET FILTER</Button>
+					)}
+
+					{processedStoreItems.length === 0 &&
+						storeState.status === "fulfilled" && (
+							<MessageBox className="flex flex-col items-center justify-center gap-5 py-20">
+								<p className="text-3xl!">No items found</p>
+								<Button to="/store">RESET FILTER</Button>
+							</MessageBox>
+						)}
+					{storeState.status === "error" && (
+						<MessageBox className="mx-auto bg-white py-20">
+							{storeState.error}
 						</MessageBox>
 					)}
 				</Container>

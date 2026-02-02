@@ -11,6 +11,12 @@ type initialStateType = {
 	items: StoreItemType[];
 };
 
+const initialState: initialStateType = {
+	status: "idle",
+	error: "",
+	items: [],
+};
+
 export const fetchStoreItems = createAsyncThunk(
 	"store/fetchStoreItems",
 	async function () {
@@ -21,16 +27,10 @@ export const fetchStoreItems = createAsyncThunk(
 
 		const items: StoreItemType[] = await data.json();
 
-		// Item will be injected into action.payload
+		// Items will be injected into action.payload
 		return items;
 	},
 );
-
-const initialState: initialStateType = {
-	status: "idle",
-	error: "",
-	items: [],
-};
 
 const storeSlice = createSlice({
 	name: "store",

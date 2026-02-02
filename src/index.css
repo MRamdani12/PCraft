@@ -88,7 +88,6 @@ p {
 	& .load-period {
 		width: 10px;
 		height: 10px;
-		border-radius: 2px;
 		background-color: black;
 		opacity: 0.3;
 		animation: 0.5s ease-in alternate infinite loading;
@@ -119,5 +118,34 @@ p {
 	to {
 		opacity: 1;
 		transform: translateY(-5px) scale(1.1);
+	}
+}
+
+/* Custom css anchor for thread effect on order history page */
+.order {
+	anchor-name: --order;
+}
+
+.order-item {
+	anchor-name: --order-item;
+	anchor-scope: --order-item;
+}
+
+.order-item::after {
+	content: "";
+	border: 1px solid rgb(182, 182, 182);
+	border-right-color: transparent;
+	border-top-color: transparent;
+	position: absolute;
+	z-index: -1;
+	top: anchor(--order bottom);
+	left: calc(anchor(--order left) + 3rem);
+	bottom: anchor(--order-item center);
+	right: anchor(--order-item left);
+}
+
+@media only screen and (max-width: 1280px) {
+	.order-item::after {
+		left: anchor(--order center);
 	}
 }

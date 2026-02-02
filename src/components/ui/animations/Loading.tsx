@@ -1,11 +1,23 @@
-function Loading() {
+function Loading({ alternate }: { alternate?: boolean }) {
 	return (
 		<>
 			<div className="load-container">
-				<div className="load-period"></div>
-				<div className="load-period"></div>
-				<div className="load-period"></div>
-				<div className="load-period"></div>
+				<div
+					style={{ backgroundColor: alternate ? "white" : "black" }}
+					className="load-period"
+				></div>
+				<div
+					style={{ backgroundColor: alternate ? "white" : "black" }}
+					className="load-period"
+				></div>
+				<div
+					style={{ backgroundColor: alternate ? "white" : "black" }}
+					className="load-period"
+				></div>
+				<div
+					style={{ backgroundColor: alternate ? "white" : "black" }}
+					className="load-period"
+				></div>
 			</div>
 		</>
 	);

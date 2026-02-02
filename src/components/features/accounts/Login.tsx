@@ -8,9 +8,10 @@ import { createAccount } from "./AccountSlice";
 
 import BackgroundLogo from "../../ui/backgrounds/BackgroundLogo";
 import loginBg from "../../../assets/login-bg.png";
-import Button from "../../ui/Button";
+import Button from "../../ui/buttons/Button";
 import BackgroundBar from "../../ui/backgrounds/BackgroundBar";
 import ReturnNav from "../../ui/navigation/ReturnNav";
+import type { AccountStateType } from "./utils/types/AccountStateType";
 
 function Login() {
 	const [userName, setUserName] = useState("");
@@ -27,12 +28,16 @@ function Login() {
 		e.preventDefault();
 		if (!email || !userName) return;
 
-		const newAccount = {
+		const newAccount: AccountStateType = {
 			id: crypto.randomUUID(),
 			userName,
 			email,
+			phoneNumber: "",
+			address: "",
 			cart: [],
 			createdAt: new Date().toLocaleDateString(),
+			error: "",
+			status: "idle",
 		};
 
 		dispatch(createAccount(newAccount));

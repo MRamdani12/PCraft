@@ -1,18 +1,17 @@
-import { useEffect } from "react";
-import Login from "./features/accounts/Login";
-import Store from "./features/store/Store";
-import AppLayout from "./ui/AppLayout";
-import Home from "./ui/Home/Home";
-
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import { useAppDispatch, useAppSelector } from "../utils/hooks/reduxHooks";
-import { fetchStoreItems } from "./features/store/StoreSlice";
-import StoreDetail from "./features/store/StoreDetail";
+
+import StoreDetail, {
+	loader as storeDetailLoader,
+} from "./features/store/StoreDetail";
 import Cart, { action as orderAction } from "./features/accounts/cart/Cart";
 import OrderHistory, {
 	loader as OrderHistoryLoader,
 } from "./features/accounts/orders/OrderHistory";
+import Login from "./features/accounts/Login";
+import Store from "./features/store/Store";
+import AppLayout from "./ui/AppLayout";
+import Home from "./ui/Home/Home";
 
 const router = createBrowserRouter([
 	{
@@ -21,7 +20,11 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "store", element: <Store /> },
-			{ path: "store/:id", element: <StoreDetail /> },
+			{
+				path: "store/:id",
+				element: <StoreDetail />,
+				loader: storeDetailLoader,
+			},
 			{ path: "login", element: <Login /> },
 			{ path: "cart", element: <Cart />, action: orderAction },
 			{
@@ -34,13 +37,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-	const dispatch = useAppDispatch();
-	const status = useAppSelector((state) => state.store.status);
-	useEffect(() => {
-		if (status !== "idle") return;
-		dispatch(fetchStoreItems());
-	}, [dispatch, status]);
-
 	return <RouterProvider router={router} />;
 }
 

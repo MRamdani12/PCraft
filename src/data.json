@@ -1,25 +1,980 @@
-{
-	"status": "waiting_payment",
-	"name": "Dani",
-	"email": "Dani@gmail.com",
-	"phone_number": "08989091283",
-	"address": "Jl pengasinan tengah, bekasi, jawa barat, indonesia",
-	"items": [
-		{
-			"id": 1,
-			"img": "asdasd",
-			"itemName": "RTX 5080",
-			"quantity": "2",
-			"price": 1599
-		},
-		{
-			"id": 2,
-			"img": "asdasd",
-			"itemName": "RTX 5050",
-			"quantity": "10",
-			"price": 300
+[
+	{
+		"name": "GeForce RTX™ 5060 8G GAMING OC",
+		"price": 399,
+		"stock": 200,
+		"category": "VGA",
+		"created_at": "2026-01-15",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188303/MSI-RTX-5060_zjql2f.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188300/MSI-RTX-5060-1_gidud8.png"
+			},
+			{
+				"label": "Side",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188300/MSI-RTX-5060-2_rykxek.png"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188300/MSI-RTX-5060-3_r2ejhr.png"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188300/MSI-RTX-5060-4_v5oirp.png"
+			}
+		],
+		"description": {
+			"intro": "Fearless and bold, GAMING TRIO delivers strong performance to both gaming and content creation. It blends a fierce look with advanced cooling technologies, making it an unwavering ally on the gaming battlefield. GAMING TRIO is the ideal choice for gamers who strive to give their all.",
+			"features": [
+				{
+					"name": "Architecture",
+					"description": "Powered by the NVIDIA Blackwell architecture and DLSS 4"
+				},
+				{
+					"name": "Core Clocks",
+					"description": "Extreme Performance: 2640 MHz (MSI Center) Boost: 2625 MHz"
+				},
+				{
+					"name": "TWIN FROZR 10",
+					"description": "Experience superior cooling and quieter performance with MSI's enhanced fan blade design."
+				},
+				{
+					"name": "STORMFORCE Fan",
+					"description": "Seven fan blades, claw texturing, and a circular arc are designed for optimal airflow with minimal noise."
+				},
+				{
+					"name": "Nickel-plated Copper Baseplate",
+					"description": "Heat from the GPU and memory is swiftly captured by a nickel-plated copper baseplate and transferred."
+				},
+				{
+					"name": "Core Pipes",
+					"description": "Feature a square design to maximize contact with the GPU baseplate for optimal thermal management."
+				},
+				{
+					"name": "Metal Backplate",
+					"description": "A reinforcing metal backplate with airflow vents and thermal pads enhances cooling."
+				},
+				{
+					"name": "WAVE-CURVED 3.0",
+					"description": "Additional efficiency is gained by adjusting the size of the wave edges under the fan motor and other spots where there is less airflow."
+				}
+			]
 		}
-	],
-
-	"created_at": 1765265700000
-}
+	},
+	{
+		"name": "GeForce RTX™ 5080 16G GAMING TRIO OC",
+		"price": 1749,
+		"stock": 50,
+		"category": "VGA",
+		"created_at": "2026-01-02",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188301/MSI-RTX-5080_j5m8ut.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188301/MSI-RTX-5080-1_wriykw.png"
+			},
+			{
+				"label": "Side",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188301/MSI-RTX-5080-2_yjfbvf.png"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188302/MSI-RTX-5080-3_uhx4fy.png"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765188302/MSI-RTX-5080-4_zgxd6y.png"
+			}
+		],
+		"description": {
+			"intro": "Fearless and bold, GAMING delivers strong performance to both gaming and content creation. It blends a fierce look with advanced cooling technologies, making it an unwavering ally on the gaming battlefield. GAMING is the ideal choice for gamers who strive to give their all.",
+			"features": [
+				{
+					"name": "Architecture",
+					"description": "Powered by the NVIDIA Blackwell architecture and DLSS 4"
+				},
+				{
+					"name": "Core Clocks",
+					"description": "Extreme Performance: 2715 MHz (MSI Center) \n Boost: 2700 MHz (GAMING & SILENT Mode) "
+				},
+				{
+					"name": "TRI FROZR 4 Thermal Design",
+					"description": "Upgraded fans, airflow control, and thermal design deliver superior cooling and quieter operation."
+				},
+				{
+					"name": "STORMFORCE Fan",
+					"description": "Seven fan blades, claw texturing, and a circular arc are designed for optimal airflow with minimal noise."
+				},
+				{
+					"name": "Nickel-plated Copper Baseplate",
+					"description": "Heat from the GPU and memory is swiftly captured by a nickel-plated copper baseplate and transferred."
+				},
+				{
+					"name": "Core Pipes",
+					"description": "Feature a square design to maximize contact with the GPU baseplate for optimal thermal management."
+				},
+				{
+					"name": "Metal Backplate",
+					"description": "A reinforcing metal backplate with airflow vents and thermal pads enhances cooling."
+				},
+				{
+					"name": "WAVE-CURVED 4.0",
+					"description": "Precision-engineered wave edges with a high-low fin design enhance airflow and reduce turbulence."
+				},
+				{
+					"name": "Air Antegrade Fin 2.0",
+					"description": "The fins feature a V-shaped cutout and a high-low design at the airflow passthrough to optimize flow efficiency."
+				},
+				{
+					"name": "Dual BIOS",
+					"description": "Gives you the choice to prioritize for full performance in GAMING mode or low noise in SILENT mode."
+				}
+			]
+		}
+	},
+	{
+		"name": "GeForce RTX™ 4060 VENTUS 2X BLACK 8G OC",
+		"price": 320,
+		"stock": 20,
+		"category": "VGA",
+		"created_at": "2025-12-03",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464828/MSI-RTX-4060-1_gdugnj.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464828/MSI-RTX-4060-1_gdugnj.png"
+			},
+			{
+				"label": "Fronttilt",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464828/MSI-RTX-4060-1_gdugnj.png"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464830/MSI-RTX-4060-4_ezcbm9.png"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464919/MSI-RTX-4080-5_ncvuau.png"
+			}
+		],
+		"description": {
+			"intro": "VENTUS brings a fundamentally solid experience to users looking for a performance graphics card. A sharp-looking updated design with TORX FAN 4.0 lets VENTUS breeze through any task. ",
+			"features": [
+				{
+					"name": "Boost Clock / Memory Speed",
+					"description": "Powered by a blazing 2490 MHz boost clock and 8GB GDDR6 memory at 17 Gbps, this GPU delivers smooth, high‑speed performance for modern gaming."
+				},
+				{
+					"name": "TORX Fan 4.0",
+					"description": "A masterpiece of teamwork, fan blades work in pairs to create unprecedented levels of focused air pressure."
+				},
+				{
+					"name": "Zero Frozr",
+					"description": "The fans completely stop when temperatures are relatively low, eliminating all noise."
+				},
+				{
+					"name": "Reinforcing Backplate",
+					"description": "The reinforcing backplate features a flow-through design that provides additional ventilation."
+				},
+				{
+					"name": "MSI Center",
+					"description": "The exclusive MSI Center software lets you monitor, tweak, and optimize MSI products in real-time."
+				}
+			]
+		}
+	},
+	{
+		"name": "GeForce RTX™ 4080 SUPER 16G GAMING X SLIM",
+		"price": 1399,
+		"stock": 0,
+		"category": "VGA",
+		"created_at": "2025-11-12",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464919/MSI-RTX-4080-1_aewvec.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464926/MSI-RTX-4080-3_egg9vq.png"
+			},
+			{
+				"label": "Fronttilt",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464926/MSI-RTX-4080-3_egg9vq.png"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464926/MSI-RTX-4080-4_ly7eiy.png"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464919/MSI-RTX-4080-5_ncvuau.png"
+			}
+		],
+		"description": {
+			"intro": "Fearless and bold, GAMING delivers strong performance to both gaming and content creation. It blends a fierce look with advanced cooling technologies, making it an unwavering ally on the gaming battlefield. GAMING is the ideal choice for gamers who strive to give their all.",
+			"features": [
+				{
+					"name": "",
+					"description": "Powered by the NVIDIA Blackwell architecture and DLSS 4"
+				},
+				{
+					"name": "Core Clocks",
+					"description": "Extreme Performance: 2715 MHz (MSI Center) \n Boost: 2700 MHz (GAMING & SILENT Mode) "
+				},
+				{
+					"name": "TRI FROZR 4 Thermal Design",
+					"description": "Upgraded fans, airflow control, and thermal design deliver superior cooling and quieter operation."
+				},
+				{
+					"name": "STORMFORCE Fan",
+					"description": "Seven fan blades, claw texturing, and a circular arc are designed for optimal airflow with minimal noise."
+				},
+				{
+					"name": "Nickel-plated Copper Baseplate",
+					"description": "Heat from the GPU and memory is swiftly captured by a nickel-plated copper baseplate and transferred."
+				},
+				{
+					"name": "Core Pipes",
+					"description": "Feature a square design to maximize contact with the GPU baseplate for optimal thermal management."
+				},
+				{
+					"name": "Metal Backplate",
+					"description": "A reinforcing metal backplate with airflow vents and thermal pads enhances cooling."
+				},
+				{
+					"name": "WAVE-CURVED 4.0",
+					"description": "Precision-engineered wave edges with a high-low fin design enhance airflow and reduce turbulence."
+				},
+				{
+					"name": "Air Antegrade Fin 2.0",
+					"description": "The fins feature a V-shaped cutout and a high-low design at the airflow passthrough to optimize flow efficiency."
+				},
+				{
+					"name": "Dual BIOS",
+					"description": "Gives you the choice to prioritize for full performance in GAMING mode or low noise in SILENT mode."
+				}
+			]
+		}
+	},
+	{
+		"name": "ASUS PRIME GeForce RTX™ 5070 12GB GDDR7 OC Edition",
+		"price": 1599,
+		"stock": 22,
+		"category": "VGA",
+		"created_at": "2025-10-26",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464768/RTX-5070-8_ecaheo.webp"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464768/RTX-5070-1_vx4con.webp"
+			},
+			{
+				"label": "Topside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464768/RTX-5070-1_vx4con.webp"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464769/RTX-5070-6_tnpqgl.webp"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464768/RTX-5070-7_kataq6.webp"
+			},
+			{
+				"label": "Fronttilt",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464768/RTX-5070-5_jkbxlr.webp"
+			},
+			{
+				"label": "Topside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765464770/RTX-5070-4_zxjvss.webp"
+			}
+		],
+		"description": {
+			"intro": "Experience Primal performance with the Prime GeForce RTX 5070, an SFF-Ready Enthusiast GeForce Card featuring a 2.5-slot design for expansive compatibility, enhanced by a triple-fan setup for supreme airflow design for supreme cooling.",
+			"features": [
+				{
+					"Name": "Next‑Gen Architecture",
+					"description": "Fifth‑Gen Tensor Cores, new Streaming Multiprocessors, and Fourth‑Gen Ray Tracing Cores combine to deliver maximum AI speed, neural‑shader efficiency, and ultra‑realistic visuals."
+				},
+				{
+					"name": "Axial-tech Upgrades",
+					"description": "Three tried-and-true Axial-tech fans feature a smaller hub that facilitates longer blades and a barrier ring to increase downward air pressure for lower temperatures, less noise and higher performance."
+				},
+				{
+					"name": "0dB Technology",
+					"description": "All three fans come to a standstill when GPU temperatures are below 50 Celsius, letting you play less demanding games or perform light tasks in relative silence."
+				},
+				{
+					"name": "Dual Ball Fan Bearings",
+					"description": "Different bearing types have unique pros and cons. Dual-ball bearings excel at durability and can last up to twice as long as sleeve bearing designs."
+				},
+				{
+					"name": "Vented Backplate",
+					"description": "Large backplate vents significantly enhance heat dissipation, helping to keep the GPU cooler during intense tasks. This additional airflow helps ensure optimal temperatures, boosting performance, longevity and stability by defending against overheating and thermal throttling. "
+				}
+			]
+		}
+	},
+	{
+		"name": "DOMINATOR® TITANIUM RGB 64GB (2x32GB) DDR5 DRAM 6000MT/s CL30 AMD EXPO & Intel XMP Memory Kit — Grey",
+		"price": 1299,
+		"stock": 22,
+		"category": "RAM",
+		"created_at": "2025-09-15",
+		"gallery": [
+			{
+				"label": "RAM",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466032/DOMINATOR_TITANIUM_RGB_DDR5_AMD_2UP_Artboard01_AA_malgwg.avif"
+			},
+			{
+				"label": "Your memory your way",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466032/DOMINATOR_TITANIUM_RGB_DDR5_AMD_2UP_Artboard04_AA_beljm4.avif"
+			},
+			{
+				"label": "Overclocking made easy",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466034/DOMINATOR_TITANIUM_RGB_DDR5_AMD_2UP_Artboard05_AA_kkfmud.avif"
+			},
+			{
+				"label": "Dominator titanium memory",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466030/DOMINATOR_TITANIUM_RGB_DDR5_AMD_2UP_Artboard02_AA_u7ebns.avif"
+			},
+			{
+				"label": "Beyond the cutting adge",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466031/DOMINATOR_TITANIUM_RGB_DDR5_AMD_2UP_Artboard03_AA_vydfkr.avif"
+			}
+		],
+		"description": {
+			"intro": "CORSAIR DOMINATOR TITANIUM RGB DDR5 Memory combines clean, refined styling with superior die-cast aluminum construction and advanced lighting design for a premium memory experience.",
+			"features": [
+				{
+					"Name": "iCUE Enabled Product",
+					"description": "CORSAIR iCUE software brings your entire setup together, creating a fully immersive ecosystem with intuitive control."
+				},
+				{
+					"name": "Memory Tested Speed Disclaimer",
+					"description": "* Requires overclocking/PC BIOS adjustments. Maximum speed and performance depend on system components, including motherboard and CPU."
+				}
+			]
+		}
+	},
+	{
+		"name": "LANCER RGB DDR5 32GB (2x16GB) CL 30 5200MT/s Memory",
+		"price": 899,
+		"stock": 2,
+		"category": "RAM",
+		"created_at": "2025-07-21",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466206/lancer_rgb_pk_single_bk_wf7ucb.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466195/869_gallery_01_ekknz4.png"
+			},
+			{
+				"label": "Topside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466198/869_gallery_03_z89rsc.png"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466196/869_gallery_02_u1lxuz.png"
+			},
+			{
+				"label": "Side",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466201/869_gallery_04_ehyaoh.png"
+			},
+			{
+				"label": "Double ram",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466203/869_gallery_05_kcjmcf.png"
+			}
+		],
+		"description": {
+			"intro": "The XPG LANCER ushers in the DDR5 era for gaming memory. Reaching frequencies of up to 6000MT/s, it'll give you a major performance boost for gaming and overclocking.",
+			"features": [
+				{
+					"Name": "Enhanced Power Management",
+					"description": "The XPG LANCER DDR5 features a built-in Power Management IC (PMIC) that enhance power supply stability. It's lower operating voltage  also make LANCER more power-efficient than DDR4."
+				},
+				{
+					"name": "Stability and Reliability",
+					"description": "With On-die error correcting code (ECC), this DDR5 memory module can correct errors in real-time to provide increased stability and reliability."
+				},
+				{
+					"name": "Made with High-Quality Materials",
+					"description": "High-quality ICs and PCBs ensure uncompromised performance and reliable overclocking, ideal for discerning gamers and overclockers."
+				},
+				{
+					"name": "AMD EXPO",
+					"description": "Support for AMD EXPO (EXtended Profiles for Overclocking) and compatibility with the latest platforms for reliability and stability. \n * AMD EXPO only supported by DDR5 memory with a speed of 6400MT/s or less."
+				},
+				{
+					"name": "Overclocking Made Easy",
+					"description": "With support for Intel XMP 3.0, get overclocking easily without the need to hassle with BIOS settings. There is no need to repeatedly adjust and fine-tune overclocking parameters."
+				}
+			]
+		}
+	},
+	{
+		"name": "Viper Venom DDR5 64GB (2x32GB) CL 36 5600MT/s Memory",
+		"price": 1199,
+		"stock": 17,
+		"category": "RAM",
+		"created_at": "2025-04-27",
+		"gallery": [
+			{
+				"label": "RAM with motherboard",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466954/6434ca9a7d80d975c3994ef5_product_gallery_venom_04_hyxm15.webp"
+			},
+			{
+				"label": "RAM with motherboard",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466951/6434ca995afac24f2a0fe854_product_gallery_venom_03_awc1rw.webp"
+			},
+			{
+				"label": "RAM with motherboard - Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466947/6434ca966142bb59166195b0_product_gallery_venom_02_gvcl6x.webp"
+			},
+			{
+				"label": "RAM with motherboard - Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765466947/6434ca925afac21cd10fe811_product_gallery_venom_01_nhodk9.webp"
+			}
+		],
+		"description": {
+			"intro": "The Viper Venom DDR5 is crafted from premium-grade aluminum components and 100% hand testing at every step to ensure top-class quality and reliability.",
+			"features": [
+				{
+					"Name": "Extraordinary Speed",
+					"description": "With performance of up to 7400MT/s in select models, the Viper Venom DDR5 offers a powerful combination of performance and efficiency featuring state-of-the-art internal clock generation and memory timing circuits."
+				},
+				{
+					"name": "Low Power Management and Thermal Management",
+					"description": "With Viper's innovative onboard power and thermal management technology, this module features efficient operation and lower power consumption for longer module lifespans."
+				},
+				{
+					"name": "Enhanced System Stability",
+					"description": "With its On-die ECC, the Viper Venom DDR5 can correct single-bit errors and detect multi-bit errors, ensuring that data integrity, data accuracy and system reliability are maintained in the event of errors in high-performance environments."
+				},
+				{
+					"name": "Intel XMP 3.0 and AMD EXPO Ready",
+					"description": "The Viper Venom DDR5 supports for Intel XMP 3.0 and AMD EXPO overclock profiles."
+				},
+				{
+					"name": "Endless Customization Options",
+					"description": "The Viper Venom DDR5 offers select RGB models with a unique lightbar that allows for seemingly endless customization. With our exclusive Viper Sync RGB App, gamers can easily pair lighting effects with other devices for one fully immersive system."
+				}
+			]
+		}
+	},
+	{
+		"name": "ROG STRIX X870E-H GAMING WIFI7 HATSUNE MIKU EDITION",
+		"price": 539,
+		"stock": 121,
+		"category": "Motherboard",
+		"created_at": "2025-03-19",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471426/Motherboard-ASUS-4_dh7pus.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471427/Motherboard-ASUS_ylt33x.png"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471428/Motherboard-ASUS-2_p5rpop.png"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471427/Motherboard-ASUS-3_vahkbt.png"
+			}
+		],
+		"description": {
+			"intro": "ROG continues its collaboration with virtual pop star Hatsune Miku with a complete gaming system centered around ROG's sci-fi aesthetics and Miku's signature blue-green, pink-color scheme. The collection combines Hatsune Miku’s signature style with superior ROG performance, premium quality, and versatile functionality for competitive gameplay or daily tasks. Products include a motherboard, graphics card, PC case, all-in-one cooler, SSD enclosure, power supply, monitor, and apparels, enabling gamers to create an entire gaming setup that exudes the vibrant Miku aesthetic.",
+			"features": [
+				{
+					"Name": "Power Delivery",
+					"description": "Dual ProCool II connectors and 16+2+1 power stages ensure stable, high-efficiency performance for demanding CPUs."
+				},
+				{
+					"name": "CPU Compatibility",
+					"description": "Supports AMD Ryzen™ 9000, 8000, and 7000 series with the latest AM5 socket for next-gen processing."
+				},
+				{
+					"name": "Expansion Slots",
+					"description": "PCIe® 5.0 x16 SafeSlot and PCIe® 4.0 x16 offer blazing-fast bandwidth for GPUs and add-on cards."
+				},
+				{
+					"name": "Memory Performance",
+					"description": "DDR5 8000+ MT/s (OC) across 4 DIMM slots delivers ultra-fast multitasking and gaming responsiveness."
+				},
+				{
+					"name": "Storage Flexibility",
+					"description": "Four M.2 slots including dual PCIe 5.0 x4 support give you lightning-speed NVMe storage options."
+				}
+			]
+		}
+	},
+	{
+		"name": "MSI PRO Z790-A WIFI II",
+		"price": 399,
+		"stock": 121,
+		"category": "Motherboard",
+		"created_at": "2025-01-05",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471542/MSI-Motherboard-1_goudta.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471544/MSI-Motherboard-2_yx8brk.png"
+			},
+			{
+				"label": "Tilt",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471540/MSI-Motherboard-4_vqwed3.png"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471540/MSI-Motherboard-5_iexoyt.png"
+			}
+		],
+		"description": {
+			"intro": "PRO Z790-A WIFI II offers a simple design with a harmonious silver color scheme that perfectly matches white and black PC builds. It is engineered with many exclusive features of MSI, a convenient Wi-Fi 6E solution, and DDR5 optimization for Intel® Core™ 14th Gen and 13th Gen processors.",
+			"features": [
+				{
+					"Name": "Processor Support",
+					"description": "Compatible with Intel® Core™ 14th, 13th, and 12th Gen CPUs on LGA 1700 socket."
+				},
+				{
+					"name": "Memory Performance",
+					"description": "Dual-channel DDR5 7800+ MHz (OC) for ultra-fast multitasking and responsiveness."
+				},
+				{
+					"name": "Thermal Solution",
+					"description": "Extended heatsinks, high-grade thermal pads, and M.2 Shield Frozr for nonstop cooling."
+				},
+				{
+					"name": "PCB Quality",
+					"description": "6-layer server-grade PCB with 2oz thickened copper for durability and clean signal flow"
+				},
+				{
+					"name": "Gaming Speed",
+					"description": "PCIe 5.0, Lightning Gen 4 M.2, and USB 3.2 Gen 2x2 for ultra-fast data and graphics."
+				},
+				{
+					"name": "USB Connectivity",
+					"description": "Intel Turbo USB 3.2 Gen2 ensures stable, high-speed connections for peripherals."
+				},
+				{
+					"name": "Networking",
+					"description": "2.5G LAN and Wi-Fi 6E deliver secure, low-latency performance for gaming and streaming."
+				},
+				{
+					"name": "Audio Experience",
+					"description": "AUDIO BOOST 5 brings studio-grade sound for immersive gameplay and content creation."
+				}
+			]
+		}
+	},
+	{
+		"name": "ASRock X870E TAICHI OCF",
+		"price": 559,
+		"stock": 23,
+		"category": "Motherboard",
+		"created_at": "2024-11-28",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471917/X870E_Taichi_OCF_L1_uoqi4k.png"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471441/gallery01_gtktyu.jpg"
+			},
+			{
+				"label": "Backside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471443/gallery06_lrnrud.jpg"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765471444/gallery08_g8fdry.jpg"
+			}
+		],
+		"description": {
+			"intro": "X870E Taichi OCF is the pinnacle of ASRock’s commitment to extreme overclocking. Engineered to meet the demands of professional overclockers, this motherboard delivers unparalleled precision, overclocking capability, and performance.",
+			"features": [
+				{
+					"Name": "CPU Support",
+					"description": "Built for AMD Ryzen™ 9000, 8000, and 7000 Series with AM5 socket compatibility."
+				},
+				{
+					"name": "Power Design",
+					"description": "22+2+1 phase layout with 110A SPS delivers ultra-stable, high-efficiency power."
+				},
+				{
+					"name": "Memory Configuration",
+					"description": "Dual DDR5 DIMMs support blazing-fast speeds with dual-channel performance."
+				},
+				{
+					"name": "Expansion Slots",
+					"description": "Two PCIe 5.0 x16 and one PCIe 4.0 x4 slot for next-gen GPUs and add-ons."
+				},
+				{
+					"name": "Graphics Outputs",
+					"description": "HDMI and dual USB4 Type-C ports offer flexible, high-bandwidth display options."
+				},
+				{
+					"name": "USB Connectivity",
+					"description": "Packed with USB4, Gen2x2, Gen2, Gen1, and USB 2.0 ports for all your devices."
+				},
+				{
+					"name": "Networking",
+					"description": "Realtek 5GbE LAN and WiFi 7 + Bluetooth for ultra-fast, stable connections."
+				},
+				{
+					"name": "Storage Options",
+					"description": "Four M.2 slots across Gen5, Gen4, and Gen3, plus two SATA3 for versatile setups."
+				},
+				{
+					"name": "Special Features",
+					"description": "EZ Release Design and Overclocking Toolkit for smooth builds and performance tuning."
+				}
+			]
+		}
+	},
+	{
+		"name": "AMD Ryzen 9 9950X - Ryzen 9 9000 Series Granite Ridge (Zen 5) 16-Core 4.3 GHz - Socket AM5 170W - Radeon Graphics Processor - 100-100001277WOF",
+		"price": 509,
+		"stock": 23,
+		"category": "CPU",
+		"created_at": "2024-09-14",
+		"gallery": [
+			{
+				"label": "Box Front",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521785/19-113-841-02_oapxpl.webp"
+			},
+			{
+				"label": "Box Front",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521785/19-113-841-03_was3dp.webp"
+			},
+			{
+				"label": "Box Back",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521785/19-113-841-04_jvyman.webp"
+			},
+			{
+				"label": "Box Back",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521784/19-113-841-01_dbbrlg.webp"
+			}
+		],
+		"description": {
+			"intro": "Unleash elite performance with AMD’s cutting-edge 16-core processor built on the powerful Zen 5 architecture. Designed for gamers, creators, and power users, this chip delivers blazing speeds and next-gen platform support for the ultimate desktop experience.",
+			"features": [
+				{
+					"Name": "16 Cores / 32 Threads",
+					"description": "Massive multi-threaded power for gaming, streaming, and productivity."
+				},
+				{
+					"name": "Zen 5 Architecture",
+					"description": "Advanced efficiency and performance with AMD’s latest CPU design"
+				},
+				{
+					"name": "Max Boost up to 5.7 GHz",
+					"description": "Unlocked for overclocking to push your system to the limit."
+				},
+				{
+					"name": "Memory Support",
+					"description": "DDR5-5600 compatibility for high-speed RAM performance."
+				},
+				{
+					"name": "Platform",
+					"description": "Built for the AM5 socket with PCIe 5.0 support on select motherboards."
+				}
+			]
+		}
+	},
+	{
+		"name": "Intel Core i9-14900K - Core i9 14th Gen 24-Core (8P+16E) LGA 1700 125W Intel UHD Graphics 770 Desktop Processor - Boxed - BX8071514900K",
+		"price": 469,
+		"stock": 23,
+		"category": "CPU",
+		"created_at": "2024-07-09",
+		"gallery": [
+			{
+				"label": "Intel Core i9-14900K",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521783/19-118-462-03_utwirv.webp"
+			}
+		],
+		"description": {
+			"intro": "Unleash elite performance with AMD’s cutting-edge 16-core processor built on the powerful Zen 5 architecture. Designed for gamers, creators, and power users, this chip delivers blazing speeds and next-gen platform support for the ultimate desktop experience.",
+			"features": [
+				{
+					"Name": "24 Cores / 32 Threads",
+					"description": "Includes 8 Performance cores (P-cores) and 16 Efficient cores (E-cores) for optimized workload distribution."
+				},
+				{
+					"name": "Integrated Graphics",
+					"description": "Intel® UHD Graphics 770 built-in for smooth visuals and backup GPU capability."
+				},
+				{
+					"name": "Up to 6.0 GHz Unlocked",
+					"description": "Turbo Boost Max Technology 3.0 delivers peak performance for gaming and heavy tasks."
+				},
+				{
+					"name": "Cache",
+					"description": "36MB total for rapid data access and responsiveness."
+				},
+				{
+					"name": "Motherboard Compatibility",
+					"description": "Works with Intel 600-series (may require BIOS update) and 700-series chipsets."
+				},
+				{
+					"name": "Memory Support",
+					"description": "Compatible with both DDR4 and DDR5 memory for flexible system builds."
+				},
+				{
+					"name": "PCIe Support",
+					"description": "PCIe 5.0 and 4.0 ready for next-gen GPUs and SSDs."
+				}
+			]
+		}
+	},
+	{
+		"name": "Intel Core Ultra 9 285K - Core Ultra 9 (Series 2) Arrow Lake 24-Core (8P+16E), LGA 1851, 125W Desktop Processor - BX80768285K",
+		"price": 569,
+		"stock": 23,
+		"category": "CPU",
+		"created_at": "2024-05-23",
+		"gallery": [
+			{
+				"label": "Intel Core Ultra 9 285K ",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521783/19-118-505-08_u35y7t.webp"
+			}
+		],
+		"description": {
+			"intro": "Push the limits of desktop performance with Intel’s Core Ultra 9 285K, part of the Arrow Lake Series 2 lineup. With a hybrid 24-core design and cutting-edge 3nm process, this chip is built for elite gaming, multitasking, and future-ready builds.",
+			"features": [
+				{
+					"Name": "24 Cores / 32 Threads",
+					"description": "Includes 8 Performance cores (P-cores) and 16 Efficient cores (E-cores) for intelligent workload distribution."
+				},
+				{
+					"name": "3nm TSMC N3B Process",
+					"description": "Advanced node for improved efficiency and thermal performance"
+				},
+				{
+					"name": "Cache",
+					"description": "36MB L3 + 40MB L2 for ultra-fast data access and responsiveness."
+				},
+				{
+					"name": "Power Rating",
+					"description": "125W TDP — ideal for high-performance desktop setups."
+				},
+				{
+					"name": "Socket Compatibility",
+					"description": "LGA 1851 — designed for next-gen Intel motherboards."
+				}
+			]
+		}
+	},
+	{
+		"name": "Corsair SF Series SF1000 - 80 PLUS Platinum, Fully Modular SFX Power Supply - CP-9020257-NA",
+		"price": 229.99,
+		"stock": 12,
+		"category": "PSU",
+		"created_at": "2024-02-11",
+		"gallery": [
+			{
+				"label": "Item ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521787/17-139-332-01_ewygpt.webp"
+			},
+			{
+				"label": "Item power",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521787/17-139-332-02_knzg7a.webp"
+			},
+			{
+				"label": "Side",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521788/17-139-332-03_xoiza2.webp"
+			},
+			{
+				"label": "Fan",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521789/17-139-332-09_libjhc.webp"
+			},
+			{
+				"label": "Ports",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521789/17-139-332-05_euurpc.webp"
+			}
+		],
+		"description": {
+			"intro": "Power your compact build with the Corsair SF1000, a high-efficiency SFX PSU designed for modern systems. With 80 PLUS Platinum certification, ATX 3.1 compliance, and PCIe 5.1 readiness, it delivers reliable performance in a small form factor.",
+			"features": [
+				{
+					"name": "80 PLUS Platinum Efficiency",
+					"description": "Delivers high energy efficiency for reduced heat and lower operating costs."
+				},
+				{
+					"name": "ATX 3.1 & PCIe 5.1 Ready",
+					"description": "Supports next-gen GPUs and systems with advanced power delivery standards."
+				},
+				{
+					"name": "Fully Modular Design",
+					"description": "Type-5 Micro-Fit connectors allow clean cable management and easy installation."
+				},
+				{
+					"name": "92mm PWM Cooling Fan",
+					"description": "Smart fan control with Zero RPM mode for silent operation under low loads."
+				},
+				{
+					"name": "105°C Japanese Capacitors",
+					"description": "Premium components ensure long-term reliability and stable power output."
+				},
+				{
+					"name": "Continuous Operation at 50°C",
+					"description": "Engineered to perform reliably even in high-temperature environments."
+				},
+				{
+					"name": "SFX-to-ATX Bracket Included",
+					"description": "Flexible mounting options for both SFX and ATX cases."
+				},
+				{
+					"name": "Warranty",
+					"description": "Backed by a 7-year Corsair warranty for peace of mind."
+				}
+			]
+		}
+	},
+	{
+		"name": "Noctua NH-D14 - Premium CPU Cooler with Dual NF-P14 PWM and NF-P12 PWM Fans",
+		"price": 219.99,
+		"stock": 18,
+		"category": "Cooler",
+		"created_at": "2025-02-11",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521784/AADYS200826XapyC_q9ugu6.webp"
+			},
+			{
+				"label": "Item",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521784/AADYS200826kriJW_jhyarh.webp"
+			},
+			{
+				"label": "Downside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521785/AADYS200826EIvav_rq4qx9.webp"
+			},
+			{
+				"label": "Topside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521783/AADYS200826lIWs0_xb4xkf.webp"
+			}
+		],
+		"description": {
+			"intro": "Engineered for top-tier thermal performance and near-silent operation, the Noctua NH-D14 is a legendary dual-tower cooler trusted by enthusiasts and overclockers worldwide. With premium fans, broad socket compatibility, and award-winning thermal compound, it’s built to last.",
+			"features": [
+				{
+					"name": "Dual-Tower Design with 6 Heatpipes",
+					"description": "Provides exceptional cooling performance for overclocked or ultra-quiet systems."
+				},
+				{
+					"name": "Premium NF-P14 & NF-P12 PWM Fans",
+					"description": "140mm and 120mm fans with Low-Noise Adaptors for optimized airflow and silent operation."
+				},
+				{
+					"name": "Wide Socket Compatibility",
+					"description": "Supports Intel LGA1200, LGA20xx, LGA115x and AMD AM2–AM4, FM1–FM2+ sockets via SecuFirm2 mounting."
+				},
+				{
+					"name": "NT-H1 Thermal Compound Included",
+					"description": "Award-winning paste ensures excellent heat transfer and easy application."
+				},
+				{
+					"name": "Renowned Noctua Quality",
+					"description": "Backed by over 350 awards and a 6-year manufacturer’s warranty."
+				}
+			]
+		}
+	},
+	{
+		"name": "CORSAIR iCUE H150i ELITE LCD - Display Liquid CPU Cooler with 3x 120mm Fans",
+		"price": 399,
+		"stock": 15,
+		"category": "Cooler",
+		"created_at": "2026-01-05",
+		"gallery": [
+			{
+				"label": "Item and Box",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521793/35-181-265-08_qvxwnc.webp"
+			},
+			{
+				"label": "Frontside",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521790/35-181-265-01_efhj3p.webp"
+			},
+			{
+				"label": "Dynamic RGB Lighting",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521791/35-181-265-04_l2bvbn.webp"
+			},
+			{
+				"label": "Personalized LCD Dashboard",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521791/35-181-265-03_opidga.webp"
+			},
+			{
+				"label": "Wide Compability",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521792/35-181-265-06_ygpv9v.webp"
+			},
+			{
+				"label": "Magnetic Levitation Fans",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521792/35-181-265-05_rtqkbt.webp"
+			},
+			{
+				"label": "iCUE H150i Elite LCD",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521792/35-181-265-02_rlyoql.webp"
+			},
+			{
+				"label": "Product Dimension",
+				"url": "https://res.cloudinary.com/dx6inztlb/image/upload/v1765521792/35-181-265-07_p6zcbf.webp"
+			}
+		],
+		"description": {
+			"intro": "Elevate your cooling game with the CORSAIR iCUE H150i ELITE LCD, a premium all-in-one liquid CPU cooler featuring a brilliant IPS display, powerful RGB fans, and advanced thermal performance. Designed for quiet operation and full customization, it’s the centerpiece of any high-performance build.",
+			"features": [
+				{
+					"name": "IPS LCD Display",
+					"description": "Customize your cooler with real-time system stats, logos, or animations on a vibrant screen."
+				},
+				{
+					"name": "High-Performance Pump Head",
+					"description": "Includes RGB LED ring and split-flow copper cold plate for efficient heat dissipation."
+				},
+				{
+					"name": "ML RGB ELITE Fans",
+					"description": "Three 120mm fans deliver strong airflow with low noise and stunning RGB effects."
+				},
+				{
+					"name": "CORSAIR iCUE COMMANDER CORE",
+					"description": "Included for advanced fan and RGB control via CORSAIR iCUE software."
+				},
+				{
+					"name": "Specialized Cooling Modes",
+					"description": "Quiet operation and Zero RPM mode for silent performance under light loads."
+				},
+				{
+					"name": "Low-Noise Centrifugal Pump",
+					"description": "Ensures reliable cooling with minimal acoustic footprint."
+				}
+			]
+		}
+	}
+]

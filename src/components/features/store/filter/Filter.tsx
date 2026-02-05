@@ -1,25 +1,22 @@
 import { useSearchParams } from "react-router";
 import type { SortFilterType } from "../utils/types/SortFilterType";
+import { useEffect, useState } from "react";
+
 import ViewButton from "./ViewButton";
 import CategoryTag from "./CategoryTag";
 import ButtonLink from "../../../ui/buttons/ButtonLink";
 
 type FilterProps = {
-	uniqueCategories: string[];
-	query: string;
+	itemCategories: string[];
+
 	filterCategories: string[];
 	sort: SortFilterType;
 	view: "grid" | "row";
 };
 
-function Filter({
-	uniqueCategories,
-	query,
-	filterCategories,
-	sort,
-	view,
-}: FilterProps) {
+function Filter({ itemCategories, filterCategories, sort, view }: FilterProps) {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchInput, setSearchInput] = useState("");
 	const filterBorder = "rounded-xs border border-[rgba(0,0,0,0.3)]";
 	const sortArray: SortFilterType[] = [
 		"Default",
@@ -30,15 +27,25 @@ function Filter({
 	];
 
 	function handleSearchFilters(e: React.ChangeEvent<HTMLInputElement>) {
-		const params = new URLSearchParams(searchParams);
-		if (e.target.value) {
-			params.set("q", e.target.value);
-		} else {
-			params.delete("q");
-		}
-		console.log(new URLSearchParams());
-		setSearchParams(params);
+		setSearchInput(e.target.value);
 	}
+
+	// Effect for the search filter
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			const params = new URLSearchParams(searchParams);
+
+			if (searchInput) {
+				params.set("q", searchInput);
+			} else {
+				params.delete("q");
+			}
+
+			setSearchParams(params);
+		}, 300);
+
+		return () => clearTimeout(timeout);
+	}, [searchInput]);
 
 	function handleCategoryFilters(
 		event: React.ChangeEvent<HTMLInputElement>,
@@ -46,10 +53,10 @@ function Filter({
 	) {
 		const params = new URLSearchParams(searchParams);
 		if (event.target.checked) {
-			params.append("category", newCategory);
+			params.append("category", newCategory.toLocaleLowerCase());
 			setSearchParams(params);
 		} else {
-			params.delete("category", newCategory);
+			params.delete("category", newCategory.toLocaleLowerCase());
 			setSearchParams(params);
 		}
 	}
@@ -78,7 +85,7 @@ function Filter({
 							className="h-full w-full focus:outline-0"
 							placeholder="Search..."
 							type="text"
-							value={query}
+							value={searchInput}
 							onChange={handleSearchFilters}
 						/>
 						<svg
@@ -121,10 +128,10 @@ function Filter({
 						</div>
 						<div className="absolute top-10 left-0 z-100 h-0 w-full overflow-clip border-0 border-black bg-white transition-all duration-100 group-hover:h-60 group-hover:border">
 							<ul className="flex flex-col items-start justify-start">
-								{uniqueCategories.map((c) => (
+								{itemCategories.map((c) => (
 									<li
 										key={c}
-										className={`relative w-full cursor-pointer px-4 py-2 transition-all duration-200 hover:translate-x-2 ${filterCategories.includes(c) ? "bg-black text-white" : "bg-white text-black"}`}
+										className={`relative w-full cursor-pointer px-4 py-2 transition-all duration-200 hover:translate-x-2 ${filterCategories.includes(c.toLocaleLowerCase()) ? "bg-black text-white" : "bg-white text-black"}`}
 									>
 										<label htmlFor={c}>{c}</label>
 										<input
@@ -132,7 +139,7 @@ function Filter({
 											onChange={(e) => handleCategoryFilters(e, c)}
 											type="checkbox"
 											name={c}
-											checked={filterCategories.includes(c)}
+											checked={filterCategories.includes(c.toLocaleLowerCase())}
 										/>
 									</li>
 								))}

@@ -7,6 +7,7 @@ import {
 import {
 	useLoaderData,
 	useNavigation,
+	useRevalidator,
 	type LoaderFunctionArgs,
 } from "react-router";
 import { useAppSelector } from "../../../../utils/hooks/reduxHooks";
@@ -31,6 +32,7 @@ function OrderHistory() {
 	const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 	const accountName = useAppSelector((state) => state.account.userName);
 	const navigation = useNavigation();
+	const revalidator = useRevalidator();
 
 	const sortArray: OrderSortType[] = ["Newest", "Oldest"];
 	const filterBorder = "rounded-xs border border-[rgba(0,0,0,0.3)]";
@@ -51,6 +53,7 @@ function OrderHistory() {
 
 		setIsDeleteModalOpen(false);
 		setDeleteOrderId("");
+		await revalidator.revalidate();
 	}
 
 	return (
@@ -58,14 +61,14 @@ function OrderHistory() {
 			{navigation.state === "idle" && (
 				<>
 					<Modal isOpen={isPaymentLoading}>
-						<Loading alternate={true} />
+						<Loading className="text-white" />
 					</Modal>
 					<Modal
 						isOpen={isDeleteModalOpen}
 						closeModal={() => setIsDeleteModalOpen(false)}
 					>
 						<MessageBox className="z-100 mx-auto flex max-w-[70%] flex-col items-center justify-center gap-5 bg-white py-30 text-center">
-							<h2>You sure you want to cancel this order?</h2>
+							<h2>You sure you want to remove this order?</h2>
 							<div className="flex gap-5">
 								<Button
 									onClick={handleDeleteOrder}
@@ -104,19 +107,16 @@ function OrderHistory() {
 									</h1>
 									<p className="max-w-300">
 										Note that the Stripe integration is a test mode, you can use
-										4242 4242 4242 4242 with any date and CVC number to pay for
-										the item. Also, the order here will be deleted after three
-										days and will change status (starting from processing) every
-										30 minutes.
+										4242 4242 4242 4242 as a card number with any email, date,
+										CVC number, cardholder name, and country to pay for the
+										item. Also, the order here will be deleted after three days
+										and will change status (starting after paying) every 30
+										minutes.
 									</p>
 									<p className="max-w-300">
-										Please keep in mind that I use Cloudflare cron to update the
-										status and check if payment session is expired which I set
-										to update every 30 minutes. What it means is sometimes it
-										won't update the order status to delivering (if from
-										processing) after the order is paid or it won't revert the
-										status back to waiting payment after Stripe's checkout
-										session has ended.
+										Keep in mind that with how the server works, order status
+										after paying for the item won't be updated immediately every
+										30 minutes.
 									</p>
 								</MessageBox>
 								<p className="mt-5 mb-2">

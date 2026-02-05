@@ -13,12 +13,11 @@ export async function getAddress(position: GeoLocationPositionType) {
 			`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.lat}&longitude=${position.lng}&localityLanguage=en`,
 		);
 		if (!res.ok)
-			throw new Error(
-				"Something's wrong when fetching your location, try again later",
-			);
+			throw new Error("Something's wrong when trying to get your location");
 		const data: GeocodeResponseType = await res.json();
 		return data;
 	} catch (error) {
 		console.error(error);
+		throw error;
 	}
 }

@@ -86,9 +86,6 @@ p {
 	display: flex;
 	gap: 10px;
 	& .load-period {
-		width: 10px;
-		height: 10px;
-		background-color: black;
 		opacity: 0.3;
 		animation: 0.5s ease-in alternate infinite loading;
 	}

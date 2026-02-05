@@ -5,7 +5,7 @@ import type { CartItemType } from "../utils/types/CartItemType";
 
 function OrderItem({ cartItem }: { cartItem: CartItemType }) {
 	return (
-		<div className="order-item pl flex w-full flex-col overflow-clip border border-[rgba(0,0,0,0.2)] bg-white xl:max-h-75 xl:flex-row">
+		<div className="order-item pl flex min-h-75 w-full flex-col overflow-clip border border-[rgba(0,0,0,0.2)] bg-white xl:flex-row">
 			<div className="flex items-center justify-center border-b border-[rgba(0,0,0,0.2)] xl:w-[25%] xl:border-r xl:border-b-0">
 				<img
 					className="w-full"

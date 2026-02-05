@@ -53,8 +53,7 @@ function StoreCard({
 				<span className="absolute top-4 right-4 flex items-center justify-center rounded-xs bg-black px-10 py-2 text-white">
 					{formattedPrice}
 				</span>
-
-				<img className="h-full" src={img} alt={itemName} />
+				<img className="h-full min-h-50" src={img} alt={itemName} />
 			</div>
 			<div className="relative h-full p-4">
 				<div className="relative z-10 flex h-full flex-col justify-between">

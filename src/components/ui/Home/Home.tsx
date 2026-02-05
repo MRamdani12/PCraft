@@ -1,21 +1,44 @@
+import { useEffect, useState } from "react";
+import type { StoreItemResponseType } from "../../features/store/utils/types/StoreItemsResponseType";
+
+import type { StoreItemType } from "../../features/store/utils/types/StoreItemsType";
+import { getStoreItems } from "../../../utils/services/apiServices";
+
 import BackgroundBar from "../backgrounds/BackgroundBar";
 import BackgroundBarStroke from "../backgrounds/BackgroundBarStroke";
 import BackgroundLogo from "../backgrounds/BackgroundLogo";
 import Button from "../buttons/Button";
 import Container from "../Container";
 import aboutImg from "../../../assets/pexels-joshsorenson-1714208 1.png";
-
 import Navigation from "../navigation/Navigation";
-import { useAppSelector } from "../../../utils/hooks/reduxHooks";
 import StoreCard from "../../features/store/StoreCard";
 import HomeSlider from "./HomeSlider";
-import StoreCardLoading from "../../features/store/StoreCardLoading";
-import MessageBox from "../MessageBox";
+
 import GlobalCartButton from "../../features/accounts/cart/GlobalCartButton";
+import StoreCardLoading from "../../features/store/StoreCardLoading";
 
 function Home() {
-	const storeState = useAppSelector((state) => state.store);
+	const [storeItems, setStoreItems] = useState<StoreItemType[]>([]);
+	const [isLoading, setIsLoading] = useState(false);
+
 	const SLIDER_ITEM_LIMIT = 11;
+
+	useEffect(() => {
+		async function fetchStoreItems() {
+			setIsLoading(true);
+			try {
+				const data: StoreItemResponseType =
+					await getStoreItems(SLIDER_ITEM_LIMIT);
+
+				setStoreItems(data.items);
+				setIsLoading(false);
+			} catch (error) {
+				console.error(error);
+				setIsLoading(false);
+			}
+		}
+		fetchStoreItems();
+	}, []);
 
 	return (
 		<>
@@ -141,30 +164,29 @@ function Home() {
 				</div>
 			</section>
 
-			<HomeSlider disabled={storeState.status === "error"}>
-				{storeState.status === "loading" &&
+			<HomeSlider>
+				{isLoading &&
 					Array.from({ length: SLIDER_ITEM_LIMIT }, (_, i) => (
 						<StoreCardLoading key={i} />
 					))}
-				{storeState.status === "fulfilled" &&
-					storeState.items.slice(0, SLIDER_ITEM_LIMIT).map((i) => {
-						return (
-							<StoreCard
-								key={i.id}
-								id={i.id}
-								itemName={i.name}
-								itemDescription={i.description.intro}
-								itemPrice={i.price}
-								img={i.gallery[0].url}
-								itemStock={i.stock}
-							/>
-						);
-					})}
-				{storeState.status === "error" && (
+				{storeItems.map((i) => {
+					return (
+						<StoreCard
+							key={i.id}
+							id={i.id}
+							itemName={i.name}
+							itemDescription={i.description.intro}
+							itemPrice={i.price}
+							img={i.gallery[0].url}
+							itemStock={i.stock}
+						/>
+					);
+				})}
+				{/* {storeState.status === "error" && (
 					<MessageBox className="mx-auto max-w-[80%] bg-white py-20">
 						{storeState.error}
 					</MessageBox>
-				)}
+				)} */}
 			</HomeSlider>
 
 			<section className="relative flex h-[70vh] items-center justify-center overflow-clip text-center">

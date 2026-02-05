@@ -1,9 +1,6 @@
 import { useState, type FormEvent } from "react";
-
-import {
-	useAppDispatch,
-	useAppSelector,
-} from "../../../utils/hooks/reduxHooks";
+import { useNavigate } from "react-router";
+import { useAppDispatch } from "../../../utils/hooks/reduxHooks";
 import { createAccount } from "./AccountSlice";
 
 import BackgroundLogo from "../../ui/backgrounds/BackgroundLogo";
@@ -16,13 +13,10 @@ import type { AccountStateType } from "./utils/types/AccountStateType";
 function Login() {
 	const [userName, setUserName] = useState("");
 	const [email, setEmail] = useState("");
+	const navigate = useNavigate();
 
 	// Redux stuff
 	const dispatch = useAppDispatch();
-	const [accName, accEmail] = useAppSelector((state) => [
-		state.account.userName,
-		state.account.email,
-	]);
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
@@ -43,6 +37,7 @@ function Login() {
 		dispatch(createAccount(newAccount));
 		setUserName("");
 		setEmail("");
+		navigate("/store");
 	};
 
 	return (
@@ -65,8 +60,6 @@ function Login() {
 						className="flex w-full flex-col items-start justify-start gap-10"
 					>
 						<div className="flex w-full flex-col gap-3">
-							{accName}
-							{accEmail}
 							<label className="text-xl font-light" htmlFor="userName">
 								Username
 							</label>
@@ -77,6 +70,7 @@ function Login() {
 								type="text"
 								value={userName}
 								onChange={(e) => setUserName(e.target.value)}
+								required
 							/>
 						</div>
 						<div className="flex w-full flex-col gap-3">
@@ -90,6 +84,7 @@ function Login() {
 								type="email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
+								required
 							/>
 						</div>
 						<Button>SUBMIT</Button>

@@ -1,3 +1,8 @@
+import { useCheckoutCountdown } from "../utils/hooks/useCheckoutCountdown";
+import { formatRemainingTime } from "../utils/hooks/formatRemainingTime";
+import { confirmOrder } from "../../../../utils/services/apiServices";
+import { useRevalidator } from "react-router";
+
 import type { OrderItemResponseType } from "../utils/types/OrderItemResponseType";
 
 import BackgroundFourIncline from "../../../ui/backgrounds/BackgroundFourIncline";
@@ -9,9 +14,6 @@ import processing from "../../../../assets/icons/processing.svg";
 import delivering from "../../../../assets/icons/delivering.svg";
 import arrived from "../../../../assets/icons/arrived.svg";
 import completed from "../../../../assets/icons/completed.svg";
-import { useCheckoutCountdown } from "../utils/hooks/useCheckoutCountdown";
-import { formatRemainingTime } from "../utils/hooks/formatRemainingTime";
-import { confirmOrder } from "../../../../utils/services/apiServices";
 
 type OrderHeaderProps = {
 	order: OrderItemResponseType;
@@ -25,6 +27,7 @@ function OrderHeader({
 	handlePayNow,
 }: OrderHeaderProps) {
 	const remainingMs = useCheckoutCountdown(order.checkout_expires_at);
+	const revalidator = useRevalidator();
 
 	let orderStatusFormatted;
 	let orderStatusSVG;
@@ -95,7 +98,10 @@ function OrderHeader({
 						{order.status === "arrived" && (
 							<div className="flex flex-col items-center justify-center text-center">
 								<Button
-									onClick={() => confirmOrder(order.id)}
+									onClick={async () => {
+										await confirmOrder(order.id);
+										await revalidator.revalidate();
+									}}
 									className="border-green-600 bg-green-600 hover:text-green-600"
 								>
 									CONFIRM ORDER

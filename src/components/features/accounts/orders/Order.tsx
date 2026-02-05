@@ -32,7 +32,6 @@ function Order({
 		setIsPaymentLoading(true);
 		try {
 			const url = await payOrder(order.id, accountId);
-			console.log(url);
 			window.location.href = url.checkoutUrl;
 		} catch (error) {
 			console.error(error);
@@ -76,7 +75,7 @@ function Order({
 
 				{order.items.map((item) => {
 					return (
-						<li>
+						<li key={item.itemId}>
 							<OrderItem cartItem={item} />
 						</li>
 					);

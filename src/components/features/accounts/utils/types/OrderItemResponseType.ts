@@ -2,7 +2,7 @@ import type { CartItemType } from "./CartItemType";
 
 export type OrderItemResponseType = {
 	id: string;
-	accountId: string;
+	account_id: string;
 	status:
 		| "waiting_payment"
 		| "paying"

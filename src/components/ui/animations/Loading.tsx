@@ -1,23 +1,47 @@
-function Loading({ alternate }: { alternate?: boolean }) {
+function Loading({ className }: { className?: string }) {
 	return (
 		<>
-			<div className="load-container">
-				<div
-					style={{ backgroundColor: alternate ? "white" : "black" }}
+			<div className={`load-container ${className}`}>
+				<svg
 					className="load-period"
-				></div>
-				<div
-					style={{ backgroundColor: alternate ? "white" : "black" }}
+					width="10"
+					height="10"
+					viewBox="0 0 10 10"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<rect width="10" height="10" fill="currentColor" />
+				</svg>
+				<svg
 					className="load-period"
-				></div>
-				<div
-					style={{ backgroundColor: alternate ? "white" : "black" }}
+					width="10"
+					height="10"
+					viewBox="0 0 10 10"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<rect width="10" height="10" fill="currentColor" />
+				</svg>
+				<svg
 					className="load-period"
-				></div>
-				<div
-					style={{ backgroundColor: alternate ? "white" : "black" }}
+					width="10"
+					height="10"
+					viewBox="0 0 10 10"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<rect width="10" height="10" fill="currentColor" />
+				</svg>
+				<svg
 					className="load-period"
-				></div>
+					width="10"
+					height="10"
+					viewBox="0 0 10 10"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<rect width="10" height="10" fill="currentColor" />
+				</svg>
 			</div>
 		</>
 	);

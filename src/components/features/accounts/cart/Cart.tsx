@@ -68,6 +68,12 @@ function Cart() {
 
 	return (
 		<>
+			<FadeInOut show={accountState.status === "error"}>
+				<FloatingError
+					error={accountState.error}
+					deleteErrorFn={() => dispatch(deleteError())}
+				/>
+			</FadeInOut>
 			<FadeInOut show={isLoading}>
 				<PageLoading>Please Wait...</PageLoading>
 			</FadeInOut>
@@ -140,13 +146,13 @@ function Cart() {
 									placeholder="Enter your address..."
 									required
 								></textarea>
-								{!accountState.address && (
+								{!accountState.address && !accountState.error && (
 									<Button
 										onClick={handleGeolocation}
-										className="absolute right-3 bottom-3 flex h-13 w-55 flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:bg-black! hover:text-white!"
+										className="absolute right-3 bottom-3 flex h-13 w-55 flex-col items-center justify-center gap-2"
 									>
 										{accountState.status === "loading" ? (
-											<Loading alternate={true} />
+											<Loading />
 										) : (
 											"Use your position"
 										)}
@@ -172,7 +178,10 @@ function Cart() {
 						<div className="mb-10 flex max-h-150 w-full flex-col gap-10 overflow-y-auto xl:p-5">
 							{cart.map((cartItem) => {
 								return (
-									<div className="flex w-full flex-wrap items-center justify-center gap-5 sm:flex-nowrap sm:justify-start 2xl:flex-nowrap">
+									<div
+										key={cartItem.itemId}
+										className="flex w-full flex-wrap items-center justify-center gap-5 sm:flex-nowrap sm:justify-start 2xl:flex-nowrap"
+									>
 										<div className="flex w-[20%] min-w-37.5 shrink-0 items-center justify-center rounded-xs p-1 sm:justify-start 2xl:border 2xl:border-[rgba(0,0,0,0.2)]">
 											<img
 												className="w-full"

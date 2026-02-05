@@ -1,5 +1,11 @@
 // Utils Import
-import { useNavigate, useParams } from "react-router";
+import {
+	useLoaderData,
+	useNavigate,
+	useNavigation,
+	useParams,
+	type LoaderFunctionArgs,
+} from "react-router";
 import {
 	useAppDispatch,
 	useAppSelector,
@@ -11,6 +17,11 @@ import {
 	deleteCartItem,
 	substractCartItemQuantity,
 } from "../accounts/AccountSlice";
+import {
+	getSingleStoreItem,
+	getStoreItems,
+} from "../../../utils/services/apiServices";
+import type { StoreItemResponseType } from "./utils/types/StoreItemsResponseType";
 
 // UI Import
 import ReturnNav from "../../ui/navigation/ReturnNav";
@@ -27,10 +38,15 @@ import Modal from "../../ui/Modal";
 import GlobalCartButton from "../accounts/cart/GlobalCartButton";
 import FadeInOut from "../../ui/animations/FadeInOut";
 import Loading from "../../ui/animations/Loading";
+import type { StoreItemType } from "./utils/types/StoreItemsType";
 
 function StoreDetail() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const storeState = useAppSelector((state) => state.store);
+	const loader = useLoaderData();
+	const storeItem: StoreItemType = loader.storeItem;
+	const relatedStoreItems: StoreItemType[] = loader.relatedStoreItems;
+	const navigation = useNavigation();
+	const isLoading = navigation.state === "loading";
 	const AccountStateCart = useAppSelector((state) => state.account.cart);
 	const dispatch = useAppDispatch();
 	const params = useParams();
@@ -38,8 +54,6 @@ function StoreDetail() {
 	const bigImgContainerRef = useRef<HTMLDivElement | null>(null);
 	const bigImgRef = useRef<HTMLImageElement | null>(null);
 	const navigate = useNavigate();
-
-	const storeItem = storeState.items.find((i) => i.id === Number(params.id));
 
 	const isInCart = AccountStateCart.some(
 		(item) => item.itemId === Number(params.id),
@@ -84,23 +98,26 @@ function StoreDetail() {
 		dispatch(addToCart(newCartItem));
 	}
 
+	if (!storeItem) {
+		return (
+			<div className="flex h-dvh items-center justify-center">
+				<MessageBox className="mx-auto max-w-[90%] py-20">
+					Something's wrong, try again later
+				</MessageBox>
+			</div>
+		);
+	}
+
 	return (
 		<>
 			<Navigation />
-			{storeState.status === "loading" && (
+			{isLoading && (
 				<div className="flex h-dvh w-dvw flex-col items-center justify-center gap-3">
 					<Loading />
 					<p className="ml-1">Loading item...</p>
 				</div>
 			)}
-			{storeState.status === "error" && (
-				<div className="flex h-dvh items-center justify-center">
-					<MessageBox className="mx-auto max-w-[90%] py-20">
-						{storeState.error}
-					</MessageBox>
-				</div>
-			)}
-			{storeState.status === "fulfilled" && storeItem && (
+			{!isLoading && (
 				<FadeInOut show={true}>
 					<GlobalCartButton />
 					<Modal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}>
@@ -128,7 +145,7 @@ function StoreDetail() {
 						</div>
 					</Modal>
 
-					<div className="relative overflow-clip pt-30">
+					<div className="relative overflow-clip pt-30 pb-30">
 						<BackgroundLogo className="absolute top-[30%] -z-1 mx-auto ml-10 w-full opacity-5" />
 						<BackgroundBarAlternate className="absolute top-0 left-0 hidden 2xl:block" />
 						<Container>
@@ -141,7 +158,7 @@ function StoreDetail() {
 								</ReturnNav>
 							</div>
 
-							{storeState.status === "fulfilled" && (
+							{!isLoading && (
 								<div className="justify-between gap-20 xl:flex">
 									<div className="relative mb-10 flex items-start xl:mb-0 xl:w-[50%]">
 										<div className="sticky top-5 flex w-full flex-col gap-5">
@@ -294,36 +311,38 @@ function StoreDetail() {
 									</div>
 								</div>
 							)}
-							<div className="my-20 flex flex-col gap-10">
-								<h2>Item with the same category</h2>
-								<div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-									{storeState.items
-										.filter((i) => i.category === storeItem.category)
-										// Note: sort mutate array, this is safe because filter copy the previous array into a new one
-										.sort(
-											(a, b) =>
-												new Date(a.created_at).getTime() -
-												new Date(b.created_at).getTime(),
-										)
-										.slice(0, 4)
-										.map((item) => {
-											return (
-												<StoreCard
-													key={item.id}
-													id={item.id}
-													img={item.gallery[0].url}
-													itemName={item.name}
-													itemPrice={item.price}
-													itemDescription={item.description.intro}
-													itemStock={item.stock}
-												/>
-											);
-										})}
+							{relatedStoreItems && (
+								<div className="my-20 flex flex-col gap-10">
+									<h2>Item with the same category</h2>
+									<div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+										{relatedStoreItems
+											.filter((i) => i.category === storeItem.category)
+											// Note: sort mutate array, this is safe because filter copy the previous array into a new one
+											.sort(
+												(a, b) =>
+													new Date(a.created_at).getTime() -
+													new Date(b.created_at).getTime(),
+											)
+											.slice(0, 4)
+											.map((item) => {
+												return (
+													<StoreCard
+														key={item.id}
+														id={item.id}
+														img={item.gallery[0].url}
+														itemName={item.name}
+														itemPrice={item.price}
+														itemDescription={item.description.intro}
+														itemStock={item.stock}
+													/>
+												);
+											})}
+									</div>
+									<div className="flex justify-end">
+										<Button to="/store">SEE ALL ITEMS</Button>
+									</div>
 								</div>
-								<div className="flex justify-end">
-									<Button to="/store">SEE ALL ITEMS</Button>
-								</div>
-							</div>
+							)}
 						</Container>
 					</div>
 				</FadeInOut>
@@ -333,3 +352,25 @@ function StoreDetail() {
 }
 
 export default StoreDetail;
+
+// eslint-disable-next-line react-refresh/only-export-components
+export async function loader({ params }: LoaderFunctionArgs) {
+	try {
+		const storeItem: StoreItemType = await getSingleStoreItem(
+			Number(params.id),
+		);
+		const relatedStoreItemsRes: StoreItemResponseType = await getStoreItems(
+			4,
+			null,
+			[storeItem.category],
+		);
+
+		const relatedStoreItems = relatedStoreItemsRes.items.filter(
+			(item) => item.id !== storeItem.id,
+		);
+
+		return { storeItem, relatedStoreItems };
+	} catch (error) {
+		console.error(error);
+	}
+}

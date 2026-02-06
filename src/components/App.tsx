@@ -12,11 +12,13 @@ import Login from "./features/accounts/Login";
 import Store from "./features/store/Store";
 import AppLayout from "./ui/AppLayout";
 import Home from "./ui/Home/Home";
+import PageError from "./ui/PageError";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <AppLayout />,
+		errorElement: <PageError />,
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "store", element: <Store /> },

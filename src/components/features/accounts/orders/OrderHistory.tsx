@@ -21,6 +21,7 @@ import Button from "../../../ui/buttons/Button";
 import Order from "./Order";
 import Modal from "../../../ui/Modal";
 import Loading from "../../../ui/animations/Loading";
+import GlobalCartButton from "../cart/GlobalCartButton";
 
 type OrderSortType = "Newest" | "Oldest";
 
@@ -58,6 +59,7 @@ function OrderHistory() {
 
 	return (
 		<>
+			<GlobalCartButton />
 			{navigation.state === "idle" && (
 				<>
 					<Modal isOpen={isPaymentLoading}>

@@ -32,6 +32,8 @@ import FloatingError from "../../../ui/FloatingError";
 import Loading from "../../../ui/animations/Loading";
 import PageLoading from "../../../ui/PageLoading";
 import FadeInOut from "../../../ui/animations/FadeInOut";
+import ReturnNav from "../../../ui/navigation/ReturnNav";
+import Container from "../../../ui/Container";
 
 type FormOrderType = {
 	name: string;
@@ -53,6 +55,16 @@ function Cart() {
 
 	const inputContainerClass = "flex flex-col gap-2";
 	const inputClass = "rounded-xs border border-[rgba(0,0,0,0.8)] px-3 py-2";
+
+	const totalItemPrice = cart.reduce(
+		(acc, item) => acc + item.itemPrice * item.itemQuantity,
+		0,
+	);
+
+	const totalPrice = new Intl.NumberFormat("en-US", {
+		style: "currency",
+		currency: "USD",
+	}).format(totalItemPrice);
 
 	useEffect(() => {
 		if (actionData?.success) {
@@ -77,191 +89,213 @@ function Cart() {
 			<FadeInOut show={isLoading}>
 				<PageLoading>Please Wait...</PageLoading>
 			</FadeInOut>
+			<BackgroundBarAlternateStroke className="absolute -top-10 left-0 hidden xl:block" />
+
 			<Navigation />
-			{accountState.status === "error" && (
-				<FloatingError
-					deleteErrorFn={() => dispatch(deleteError())}
-					error={accountState.error}
-				/>
-			)}
-			{cart.length === 0 && (
-				<div className="flex h-dvh w-dvw items-center justify-center">
-					<MessageBox className="mx-auto flex max-w-[70%] flex-col py-20">
-						<h1 className="mb-2">Your cart is still empty</h1>
-						<p className="mb-7">Add some items to your cart first</p>
-						<Button to="/store">GO TO STORE</Button>
-					</MessageBox>
-				</div>
-			)}
-			{cart.length && (
-				<div className="relative flex min-h-dvh flex-col-reverse gap-20 overflow-hidden px-5 py-30 xl:flex-row xl:px-30">
-					<BackgroundBarAlternateStroke className="absolute -top-10 left-0 hidden xl:block" />
-
-					{/* Form */}
-					<Form method="POST" className="xl:w-[50%]">
-						<h1 className="text-center sm:text-start">
-							Enter your information
-						</h1>
-						<div className="mt-5 mb-10 flex flex-col gap-5">
-							<div className={inputContainerClass}>
-								<label htmlFor="email">Email</label>
-								<input
-									className={inputClass}
-									name="email"
-									defaultValue={accountState.email}
-									type="text"
-									placeholder="Enter your email..."
-									required
-								/>
-							</div>
-							<div className={inputContainerClass}>
-								<label htmlFor="name">Name</label>
-								<input
-									className={inputClass}
-									name="name"
-									defaultValue={accountState.userName}
-									type="text"
-									placeholder="Enter your name..."
-									required
-								/>
-							</div>
-							<div className={inputContainerClass}>
-								<label htmlFor="phoneNumber">Phone number</label>
-								<input
-									className={inputClass}
-									name="phoneNumber"
-									type="tel"
-									inputMode="tel"
-									autoComplete="tel"
-									placeholder="Enter your phone number..."
-									required
-								/>
-							</div>
-							<div className={`${inputContainerClass} relative`}>
-								<label htmlFor="Address">Address</label>
-								<textarea
-									className={`${inputClass} h-50 resize-none`}
-									name="address"
-									defaultValue={accountState.address}
-									placeholder="Enter your address..."
-									required
-								></textarea>
-								{!accountState.address && !accountState.error && (
-									<Button
-										onClick={handleGeolocation}
-										className="absolute right-3 bottom-3 flex h-13 w-55 flex-col items-center justify-center gap-2"
-									>
-										{accountState.status === "loading" ? (
-											<Loading />
-										) : (
-											"Use your position"
-										)}
-									</Button>
-								)}
-							</div>
+			<div className="px-5 py-30 xl:px-30">
+				{accountState.status === "error" && (
+					<FloatingError
+						deleteErrorFn={() => dispatch(deleteError())}
+						error={accountState.error}
+					/>
+				)}
+				{cart.length === 0 && (
+					<Container>
+						<MessageBox className="mx-auto flex flex-col py-20">
+							<h1 className="mb-2">Your cart is still empty</h1>
+							<p className="mb-7">Add some items to your cart first</p>
+							<Button to="/store">GO TO STORE</Button>
+						</MessageBox>
+					</Container>
+				)}
+				{cart.length > 0 && (
+					<>
+						<div className="mb-10 flex w-full items-center">
+							<ReturnNav
+								onClick={() => navigate(-1)}
+								className="relative z-100 flex items-center justify-start gap-2 xl:text-black"
+							>
+								Go back
+							</ReturnNav>
 						</div>
-						<input
-							name="cart"
-							type="hidden"
-							value={JSON.stringify(accountState.cart)}
-						/>
-						<input type="hidden" name="accountId" value={accountState.id} />
-						<Button>ORDER ITEM(S)</Button>
-					</Form>
 
-					{/* Cart */}
-
-					<div className="flex flex-col items-start xl:w-[50%]">
-						<h2 className="mt-5 mb-5 w-full text-center sm:text-start">
-							Your cart
-						</h2>
-						<div className="mb-10 flex max-h-150 w-full flex-col gap-10 overflow-y-auto xl:p-5">
-							{cart.map((cartItem) => {
-								return (
-									<div
-										key={cartItem.itemId}
-										className="flex w-full flex-wrap items-center justify-center gap-5 sm:flex-nowrap sm:justify-start 2xl:flex-nowrap"
-									>
-										<div className="flex w-[20%] min-w-37.5 shrink-0 items-center justify-center rounded-xs p-1 sm:justify-start 2xl:border 2xl:border-[rgba(0,0,0,0.2)]">
-											<img
-												className="w-full"
-												src={cartItem.itemImage}
-												alt={cartItem.itemName}
-											/>
-										</div>
-										<div className="flex w-full flex-col items-center justify-between py-1 pb-2 text-center sm:items-start 2xl:w-[80%]">
-											<div className="mb-10 flex flex-col items-center text-center sm:items-start sm:text-start">
-												<h3 className="line-clamp-2 text-[1.5rem]">
-													{cartItem.itemName}
-												</h3>
-												<div className="flex items-center gap-3">
-													<p className="opacity-65">
-														Total Price: $
-														{cartItem.itemPrice * cartItem.itemQuantity}
-													</p>{" "}
-													|
-													<p className="opacity-65">
-														Available Stock: {cartItem.itemStock}
-													</p>
-												</div>
-											</div>
-											<div className="flex w-full flex-wrap items-center justify-center gap-2 sm:justify-between sm:gap-5">
-												<div className="flex gap-5">
-													<button
-														onClick={() => {
-															dispatch(
-																substractCartItemQuantity({
-																	itemId: cartItem.itemId,
-																	quantity: 1,
-																}),
-															);
-														}}
-														className={`flex cursor-pointer items-center justify-center rounded-xs border border-black bg-black px-3 py-0 pb-px text-white transition duration-200 hover:bg-white hover:text-black`}
-													>
-														-
-													</button>
-													{cartItem.itemQuantity}
-													<button
-														onClick={() => {
-															if (cartItem.itemQuantity >= cartItem.itemStock)
-																return;
-															dispatch(
-																addCartItemQuantity({
-																	itemId: cartItem.itemId,
-																	quantity: 1,
-																}),
-															);
-														}}
-														className="flex cursor-pointer items-center justify-center rounded-xs border border-black bg-black px-2.25 py-0 pb-px text-white transition duration-200 hover:bg-white hover:text-black"
-													>
-														+
-													</button>
-												</div>
-												<div className="flex gap-2">
-													<Link
-														to={`/store/${cartItem.itemId}`}
-														className="hover:black cursor-pointer rounded-xs border border-black bg-black px-5 py-2 text-white transition duration-200 hover:bg-white hover:text-black"
-													>
-														See Item Details
-													</Link>
-													<button
-														onClick={() =>
-															dispatch(deleteCartItem({ id: cartItem.itemId }))
-														}
-														className="cursor-pointer rounded-xs border border-red-500 bg-red-500 px-5 py-2 text-white transition duration-200 hover:bg-white hover:text-red-500"
-													>
-														Delete Item
-													</button>
-												</div>
-											</div>
-										</div>
+						<div className="relative flex min-h-dvh flex-col-reverse gap-20 overflow-hidden xl:flex-row">
+							{/* Form */}
+							<Form method="POST" className="xl:w-[50%]">
+								<h1 className="text-center sm:text-start">
+									Enter your information
+								</h1>
+								<div className="mt-5 mb-10 flex flex-col gap-5">
+									<div className={inputContainerClass}>
+										<label htmlFor="email">Email</label>
+										<input
+											className={inputClass}
+											name="email"
+											defaultValue={accountState.email}
+											type="text"
+											placeholder="Enter your email..."
+											required
+										/>
 									</div>
-								);
-							})}
+									<div className={inputContainerClass}>
+										<label htmlFor="name">Name</label>
+										<input
+											className={inputClass}
+											name="name"
+											defaultValue={accountState.userName}
+											type="text"
+											placeholder="Enter your name..."
+											required
+										/>
+									</div>
+									<div className={inputContainerClass}>
+										<label htmlFor="phoneNumber">Phone number</label>
+										<input
+											className={inputClass}
+											name="phoneNumber"
+											type="tel"
+											inputMode="tel"
+											autoComplete="tel"
+											placeholder="Enter your phone number..."
+											required
+										/>
+									</div>
+									<div className={`${inputContainerClass} relative`}>
+										<label htmlFor="Address">Address</label>
+										<textarea
+											className={`${inputClass} h-50 resize-none`}
+											name="address"
+											defaultValue={accountState.address}
+											placeholder="Enter your address..."
+											required
+										></textarea>
+										{!accountState.address && !accountState.error && (
+											<Button
+												onClick={handleGeolocation}
+												className="absolute right-3 bottom-3 flex h-13 w-55 flex-col items-center justify-center gap-2"
+											>
+												{accountState.status === "loading" ? (
+													<Loading />
+												) : (
+													"Use your position"
+												)}
+											</Button>
+										)}
+									</div>
+								</div>
+								<input
+									name="cart"
+									type="hidden"
+									value={JSON.stringify(accountState.cart)}
+								/>
+								<input type="hidden" name="accountId" value={accountState.id} />
+								<Button>ORDER ITEM(S)</Button>
+							</Form>
+
+							{/* Cart */}
+
+							<div className="flex flex-col items-start xl:w-[50%]">
+								<div className="mt-5 mb-20 flex w-full flex-wrap items-center justify-center sm:flex-nowrap xl:mt-0 xl:mb-5 xl:justify-between">
+									<h2 className="w-full text-center sm:text-start">
+										Your cart
+									</h2>
+									<span className="w-[50%] text-center xl:text-end">
+										Total Price: {totalPrice}
+									</span>
+								</div>
+								<div className="mb-10 flex max-h-150 w-full flex-col gap-10 overflow-y-auto xl:p-5">
+									{cart.map((cartItem) => {
+										return (
+											<div
+												key={cartItem.itemId}
+												className="flex w-full flex-wrap items-center justify-center gap-5 sm:flex-nowrap sm:justify-start 2xl:flex-nowrap"
+											>
+												<div className="flex w-[20%] min-w-37.5 shrink-0 items-center justify-center rounded-xs p-1 sm:justify-start 2xl:border 2xl:border-[rgba(0,0,0,0.2)]">
+													<img
+														className="w-full"
+														src={cartItem.itemImage}
+														alt={cartItem.itemName}
+													/>
+												</div>
+												<div className="flex w-full flex-col items-center justify-between py-1 pb-2 text-center sm:items-start 2xl:w-[80%]">
+													<div className="mb-10 flex flex-col items-center text-center sm:items-start sm:text-start">
+														<h3 className="line-clamp-2 text-[1.5rem]">
+															{cartItem.itemName}
+														</h3>
+														<div className="flex items-center gap-3">
+															<p className="opacity-65">
+																Total Price: $
+																{cartItem.itemPrice * cartItem.itemQuantity}
+															</p>{" "}
+															|
+															<p className="opacity-65">
+																Available Stock: {cartItem.itemStock}
+															</p>
+														</div>
+													</div>
+													<div className="flex w-full flex-wrap items-center justify-center gap-2 sm:justify-between sm:gap-5">
+														<div className="flex gap-5">
+															<button
+																onClick={() => {
+																	dispatch(
+																		substractCartItemQuantity({
+																			itemId: cartItem.itemId,
+																			quantity: 1,
+																		}),
+																	);
+																}}
+																className={`flex cursor-pointer items-center justify-center rounded-xs border border-black bg-black px-3 py-0 pb-px text-white transition duration-200 hover:bg-white hover:text-black`}
+															>
+																-
+															</button>
+															{cartItem.itemQuantity}
+															<button
+																onClick={() => {
+																	if (
+																		cartItem.itemQuantity >= cartItem.itemStock
+																	)
+																		return;
+																	dispatch(
+																		addCartItemQuantity({
+																			itemId: cartItem.itemId,
+																			quantity: 1,
+																		}),
+																	);
+																}}
+																className="flex cursor-pointer items-center justify-center rounded-xs border border-black bg-black px-2.25 py-0 pb-px text-white transition duration-200 hover:bg-white hover:text-black"
+															>
+																+
+															</button>
+														</div>
+														<div className="flex gap-2">
+															<Link
+																to={`/store/${cartItem.itemId}`}
+																className="hover:black cursor-pointer rounded-xs border border-black bg-black px-5 py-2 text-white transition duration-200 hover:bg-white hover:text-black"
+															>
+																See Item Details
+															</Link>
+															<button
+																onClick={() =>
+																	dispatch(
+																		deleteCartItem({ id: cartItem.itemId }),
+																	)
+																}
+																className="cursor-pointer rounded-xs border border-red-500 bg-red-500 px-5 py-2 text-white transition duration-200 hover:bg-white hover:text-red-500"
+															>
+																Delete Item
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										);
+									})}
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-			)}
+					</>
+				)}
+			</div>
 		</>
 	);
 }
